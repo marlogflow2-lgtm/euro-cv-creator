@@ -70,6 +70,7 @@
   --clay-deep: #a75a3d;
   --sand: #e4d9c4;
   --warm-muted: #6f6a5c;
+  --shadow-paper: 0 2px 3px color-mix(in oklab, var(--ink) 8%, transparent), 0 28px 60px -24px color-mix(in oklab, var(--ink) 36%, transparent);
 
   --background: var(--ivory);
   --foreground: var(--ink);

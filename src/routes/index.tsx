@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { sampleCV } from "../lib/cv";
 
 export const Route = createFileRoute("/")({
@@ -25,221 +27,195 @@ export const Route = createFileRoute("/")({
 
 function MiniSheet() {
   return (
-    <div className="bg-paper border border-ink/10 shadow-[0_30px_60px_-30px_rgba(27,33,25,0.4)] rounded-sm">
-      <div className="flex items-center justify-between px-5 py-3 border-b border-ink/10">
-        <span className="font-serif text-sm">Pré-visualização</span>
-        <span className="text-[10px] uppercase tracking-[0.18em] text-warm-muted">
-          A4 · 1 página
-        </span>
-      </div>
-      <div className="p-6">
-        <div className="font-serif text-2xl leading-tight">{sampleCV.nome}</div>
-        <div className="text-[12px] text-warm-muted mt-1">
-          {sampleCV.titulo} · {sampleCV.cidade}
+    <div className="relative mx-auto w-full max-w-[31rem] lg:ml-auto" aria-label="Pré-visualização de currículo">
+      <div aria-hidden="true" className="absolute inset-5 translate-x-3 translate-y-4 rotate-[1.5deg] rounded-sm border border-ink/10 bg-sand/55" />
+      <div aria-hidden="true" className="absolute inset-3 -translate-x-2 translate-y-2 -rotate-[1deg] rounded-sm border border-ink/10 bg-paper/70" />
+      <div className="relative rounded-sm border border-ink/15 bg-paper shadow-[var(--shadow-paper)]">
+        <div className="flex items-center justify-between border-b border-ink/10 px-5 py-3.5 sm:px-7">
+          <span className="font-serif text-sm">Pré-visualização</span>
+          <span className="text-[10px] uppercase tracking-[0.18em] text-warm-muted">
+            A4 · 1 página
+          </span>
         </div>
-        <div className="text-[11px] text-warm-muted mt-1">
-          {sampleCV.email} · {sampleCV.telefone}
-        </div>
-        <div className="mt-4 pt-4 border-t border-ink/10">
-          <div className="text-[10px] uppercase tracking-[0.2em] text-forest mb-2">
-            Perfil
+        <div className="p-6 sm:p-8 lg:p-9">
+          <div className="font-serif text-3xl leading-tight sm:text-4xl">{sampleCV.nome}</div>
+          <div className="mt-2 text-[12px] text-warm-muted">
+            {sampleCV.titulo} · {sampleCV.cidade}
           </div>
-          <p className="text-[11px] leading-relaxed text-warm-muted">
-            {sampleCV.perfil}
-          </p>
-        </div>
-        <div className="mt-4">
-          <div className="text-[10px] uppercase tracking-[0.2em] text-forest mb-2">
-            Experiência
+          <div className="mt-1 text-[11px] text-warm-muted">
+            {sampleCV.email} · {sampleCV.telefone}
           </div>
-          {sampleCV.experiencias.map((e) => (
-            <div key={e.cargo} className="text-[11px] font-medium mt-1 first:mt-0">
-              {e.cargo} — {e.empresa}{" "}
-              <span className="text-warm-muted font-normal">
-                · {e.inicio}–{e.fim}
-              </span>
+          <div className="mt-6 border-t border-ink/10 pt-5">
+            <div className="mb-2 text-[10px] font-medium uppercase tracking-[0.2em] text-forest">
+              Perfil
             </div>
-          ))}
+            <p className="text-[11px] leading-relaxed text-warm-muted">{sampleCV.perfil}</p>
+          </div>
+          <div className="mt-5 border-t border-ink/10 pt-5">
+            <div className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-forest">
+              Experiência
+            </div>
+            <div className="space-y-3">
+              {sampleCV.experiencias.map((experience) => (
+                <div key={experience.cargo} className="grid grid-cols-[1fr_auto] gap-3 text-[11px]">
+                  <span className="font-medium">
+                    {experience.cargo} — {experience.empresa}
+                  </span>
+                  <span className="text-warm-muted">
+                    {experience.inicio}–{experience.fim}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
+const benefits = [
+  {
+    t: "Dados pessoais",
+    d: "Nacionalidade, data de nascimento e contactos, como os recrutadores europeus esperam.",
+  },
+  {
+    t: "Experiência e formação",
+    d: "Cronologia inversa com períodos claros, entidade e descrição das principais responsabilidades.",
+  },
+  {
+    t: "Idiomas com níveis CEFR",
+    d: "Português, inglês, alemão… classificados de A1 a C2 segundo o Quadro Europeu Comum de Referência.",
+  },
+];
+
+const steps = [
+  {
+    n: "01",
+    t: "Preencha o seu percurso",
+    d: "Introduza dados pessoais, experiência, formação e idiomas num formulário guiado por secções.",
+  },
+  {
+    n: "02",
+    t: "Veja o CV a ganhar forma",
+    d: "A folha A4 ao lado atualiza em tempo real, no formato europeu, à medida que escreve.",
+  },
+  {
+    n: "03",
+    t: "Exporte e candidate-se",
+    d: "Descarregue um PDF impecável de uma página, pronto para enviar ao recrutador.",
+  },
+];
+
+const focusStyles = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-ivory";
+
 function Index() {
   return (
-    <div className="min-h-screen bg-ivory text-ink font-sans">
+    <div className="min-h-dvh bg-ivory font-sans text-ink selection:bg-sand">
       <header className="border-b border-ink/10">
-        <div className="mx-auto max-w-[1440px] px-8 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="size-9 rounded-full bg-forest grid place-items-center">
-              <span className="text-paper font-serif text-sm leading-none">P</span>
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-5 sm:px-8 lg:px-12">
+          <Link to="/" aria-label="Passepartout — página inicial" className={`flex items-center gap-3 rounded-sm ${focusStyles}`}>
+            <div className="grid size-10 shrink-0 place-items-center rounded-full bg-forest">
+              <span className="font-serif text-sm leading-none text-paper">P</span>
             </div>
             <div>
-              <div className="font-serif text-lg leading-none tracking-tight">
-                Passepartout
-              </div>
-              <div className="text-[10px] uppercase tracking-[0.22em] text-warm-muted mt-0.5">
-                Currículo Europeu
-              </div>
+              <div className="font-serif text-xl leading-none">Passepartout</div>
+              <div className="mt-1 text-[10px] uppercase tracking-[0.22em] text-warm-muted">Currículo Europeu</div>
             </div>
-          </div>
-          <nav className="hidden md:flex items-center gap-8 text-[13px] font-medium">
-            <a href="#como" className="text-warm-muted hover:text-ink">
-              Como funciona
-            </a>
-            <a href="#europass" className="text-warm-muted hover:text-ink">
-              Formato Europass
-            </a>
-          </nav>
-          <Link
-            to="/criar"
-            className="text-[13px] font-medium text-paper bg-forest rounded-full px-4 py-2 hover:bg-forest-deep transition-colors"
-          >
-            Criar o meu CV
           </Link>
+          <nav aria-label="Navegação principal" className="hidden items-center gap-10 text-[12px] font-medium uppercase tracking-[0.12em] lg:flex">
+            <a href="#como" className={`rounded-sm text-warm-muted transition-colors hover:text-ink ${focusStyles}`}>Como funciona</a>
+            <a href="#europass" className={`rounded-sm text-warm-muted transition-colors hover:text-ink ${focusStyles}`}>Formato Europass</a>
+          </nav>
+          <Button asChild className="h-11 rounded-sm px-4 shadow-none sm:px-5">
+            <Link to="/criar">Criar o meu CV</Link>
+          </Button>
         </div>
       </header>
 
-      <section className="border-b border-ink/10">
-        <div className="mx-auto max-w-[1440px] px-8 py-14 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-7">
-            <p className="text-[11px] uppercase tracking-[0.22em] text-clay mb-5">
-              Feito para o mercado de trabalho europeu
-            </p>
-            <h1 className="font-serif text-[54px] leading-[1.04] tracking-tight max-w-[16ch]">
-              Um currículo que se lê como uma{" "}
-              <span className="italic text-forest">carta bem guardada</span>.
-            </h1>
-            <p className="mt-6 text-[17px] leading-relaxed text-warm-muted max-w-[52ch]">
-              O Passepartout transforma a sua experiência num currículo europeu
-              limpo e compatível com ATS — alinhado com o Europass e formatado
-              segundo os padrões que os recrutadores em Berlim, Paris, Amesterdão
-              e Lisboa esperam.
-            </p>
-            <div className="mt-8 flex items-center gap-3">
-              <Link
-                to="/criar"
-                className="text-[14px] font-medium text-paper bg-clay rounded-full px-6 py-3 hover:bg-clay-deep transition-colors"
-              >
-                Criar o meu currículo
-              </Link>
-              <Link
-                to="/criar"
-                search={{ exemplo: true }}
-                className="text-[14px] font-medium text-ink border border-ink/20 rounded-full px-6 py-3 hover:bg-ink/5 transition-colors"
-              >
-                Ver um exemplo
-              </Link>
-            </div>
-            <div className="mt-7 flex flex-wrap items-center gap-6 text-[12px] text-warm-muted">
-              <span className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-forest" /> Sem marca
-                de água
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-forest" /> Exportar
-                em PDF (A4)
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-forest" /> Níveis de
-                idiomas CEFR
-              </span>
-            </div>
-          </div>
-          <div className="lg:col-span-5">
-            <MiniSheet />
-          </div>
-        </div>
-      </section>
-
-      <section id="europass" className="border-b border-ink/10">
-        <div className="mx-auto max-w-[1440px] px-8 py-14">
-          <div className="flex items-end justify-between mb-8">
-            <h2 className="font-serif text-3xl tracking-tight">
-              Alinhado com o formato Europass
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                t: "Dados pessoais",
-                d: "Nacionalidade, data de nascimento e contactos, como os recrutadores europeus esperam.",
-              },
-              {
-                t: "Experiência e formação",
-                d: "Cronologia inversa com períodos claros, entidade e descrição das principais responsabilidades.",
-              },
-              {
-                t: "Idiomas com níveis CEFR",
-                d: "Português, inglês, alemão… classificados de A1 a C2 segundo o Quadro Europeu Comum de Referência.",
-              },
-            ].map((c) => (
-              <div
-                key={c.t}
-                className="bg-paper border border-ink/10 rounded-sm p-6"
-              >
-                <div className="text-[10px] uppercase tracking-[0.2em] text-clay mb-2">
-                  {c.t}
-                </div>
-                <p className="text-[13px] text-warm-muted leading-relaxed">
-                  {c.d}
-                </p>
+      <main>
+        <section className="border-b border-ink/10">
+          <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-14 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-12 lg:gap-16 lg:px-12 lg:py-24">
+            <div className="lg:col-span-7 lg:pr-4">
+              <div className="mb-7 flex items-center gap-4">
+                <span aria-hidden="true" className="h-px w-10 bg-clay" />
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-clay">Feito para o mercado de trabalho europeu</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="como" className="border-b border-ink/10">
-        <div className="mx-auto max-w-[1440px] px-8 py-14 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              n: "01",
-              t: "Preencha o seu percurso",
-              d: "Introduza dados pessoais, experiência, formação e idiomas num formulário guiado por secções.",
-            },
-            {
-              n: "02",
-              t: "Veja o CV a ganhar forma",
-              d: "A folha A4 ao lado atualiza em tempo real, no formato europeu, à medida que escreve.",
-            },
-            {
-              n: "03",
-              t: "Exporte e candidate-se",
-              d: "Descarregue um PDF impecável de uma página, pronto para enviar ao recrutador.",
-            },
-          ].map((s) => (
-            <div key={s.n} className="flex gap-4">
-              <span className="font-serif text-4xl text-clay/70 leading-none">
-                {s.n}
-              </span>
-              <div>
-                <div className="font-serif text-lg">{s.t}</div>
-                <p className="text-[13px] text-warm-muted mt-1 leading-relaxed">
-                  {s.d}
-                </p>
+              <h1 className="max-w-[15ch] font-serif text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">
+                Um currículo que se lê como uma <span className="italic text-forest">carta bem guardada</span>.
+              </h1>
+              <p className="mt-7 max-w-[56ch] text-base leading-7 text-warm-muted sm:text-[17px]">
+                O Passepartout transforma a sua experiência num currículo europeu limpo e compatível com ATS — alinhado com o Europass e formatado segundo os padrões que os recrutadores em Berlim, Paris, Amesterdão e Lisboa esperam.
+              </p>
+              <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+                <Button asChild size="lg" className="h-12 rounded-sm bg-clay px-6 shadow-none hover:bg-clay-deep">
+                  <Link to="/criar">
+                    Criar o meu currículo
+                    <ArrowRight aria-hidden="true" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="h-12 rounded-sm border-ink/25 bg-transparent px-6 shadow-none hover:bg-paper">
+                  <Link to="/criar" search={{ exemplo: true }}>Ver um exemplo</Link>
+                </Button>
               </div>
+              <ul className="mt-9 grid gap-3 border-t border-ink/10 pt-6 text-[12px] text-warm-muted sm:grid-cols-3 sm:gap-5">
+                {["Sem marca de água", "Exportar em PDF (A4)", "Níveis de idiomas CEFR"].map((item) => (
+                  <li key={item} className="flex items-center gap-2.5">
+                    <span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-forest" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-          ))}
-        </div>
-      </section>
+            <div className="lg:col-span-5"><MiniSheet /></div>
+          </div>
+        </section>
+
+        <section id="europass" className="scroll-mt-6 border-b border-ink/10 bg-paper/35">
+          <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
+            <div className="mb-10 grid gap-3 border-b border-ink/15 pb-7 md:grid-cols-[1fr_auto] md:items-end">
+              <h2 className="max-w-[18ch] font-serif text-4xl leading-tight sm:text-5xl">Alinhado com o formato Europass</h2>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-clay">Padrão europeu</span>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3">
+              {benefits.map((benefit, index) => (
+                <article key={benefit.t} className="border-b border-ink/10 py-8 last:border-b-0 md:border-b-0 md:border-l md:px-8 md:py-2 md:first:border-l-0 md:first:pl-0 md:last:pr-0">
+                  <span className="mb-8 block font-serif text-3xl text-clay/70">0{index + 1}</span>
+                  <h3 className="font-serif text-2xl">{benefit.t}</h3>
+                  <p className="mt-3 max-w-[34ch] text-[14px] leading-6 text-warm-muted">{benefit.d}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="como" className="scroll-mt-6 border-b border-ink/10">
+          <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
+            <div className="mb-10 flex items-end justify-between border-b border-ink/15 pb-7">
+              <h2 className="font-serif text-4xl sm:text-5xl">Como funciona</h2>
+            </div>
+            <ol className="grid grid-cols-1 md:grid-cols-3">
+              {steps.map((step) => (
+                <li key={step.n} className="relative border-b border-ink/10 py-8 last:border-b-0 md:border-b-0 md:border-l md:px-8 md:py-2 md:first:border-l-0 md:first:pl-0 md:last:pr-0">
+                  <span className="mb-8 block text-[11px] font-semibold tracking-[0.2em] text-clay">{step.n}</span>
+                  <h3 className="max-w-[18ch] font-serif text-2xl leading-snug">{step.t}</h3>
+                  <p className="mt-3 max-w-[35ch] text-[14px] leading-6 text-warm-muted">{step.d}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      </main>
 
       <footer className="bg-forest-deep text-sand">
-        <div className="mx-auto max-w-[1440px] px-8 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="max-w-[36ch]">
-            <div className="font-serif text-xl text-paper">Passepartout</div>
-            <p className="text-[13px] text-sand/70 mt-2 leading-relaxed">
-              O curriculum vitae, formatado para a forma como a Europa realmente
-              contrata.
-            </p>
+        <div className="mx-auto flex max-w-[1440px] flex-col items-start justify-between gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-center lg:px-12">
+          <div className="max-w-[38ch]">
+            <div className="font-serif text-2xl text-paper">Passepartout</div>
+            <p className="mt-2 text-[13px] leading-relaxed text-sand/80">O curriculum vitae, formatado para a forma como a Europa realmente contrata.</p>
           </div>
-          <Link
-            to="/criar"
-            className="text-[13px] font-medium text-forest-deep bg-sand rounded-full px-5 py-2.5 hover:bg-paper transition-colors"
-          >
-            Começar agora
-          </Link>
+          <Button asChild variant="secondary" className="h-11 rounded-sm px-5 shadow-none">
+            <Link to="/criar">Começar agora</Link>
+          </Button>
         </div>
       </footer>
     </div>
