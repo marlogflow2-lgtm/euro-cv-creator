@@ -134,34 +134,35 @@ function Index() {
       </header>
 
       <main>
-        <section className="border-b border-ink/10">
-          <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-14 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-12 lg:gap-16 lg:px-12 lg:py-24">
+        <section className="relative overflow-hidden border-b border-ink/10 bg-[linear-gradient(115deg,#392684_0%,#2760ae_48%,#a94491_100%)] text-paper">
+          <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_84%_12%,rgba(255,255,255,.2),transparent_24%),radial-gradient(circle_at_8%_90%,rgba(255,255,255,.12),transparent_30%)]" />
+          <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-14 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-12 lg:gap-16 lg:px-12 lg:py-24">
             <div className="lg:col-span-7 lg:pr-4">
               <div className="mb-7 flex items-center gap-4">
-                <span aria-hidden="true" className="h-px w-10 bg-clay" />
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-clay">Feito para o mercado de trabalho europeu</p>
+                <span aria-hidden="true" className="h-px w-10 bg-white/70" />
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80">Feito para o mercado de trabalho europeu</p>
               </div>
               <h1 className="max-w-[15ch] font-serif text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">
-                Um currículo que se lê como uma <span className="italic text-forest">carta bem guardada</span>.
+                Um currículo que se lê como uma <span className="italic text-white">carta bem guardada</span>.
               </h1>
-              <p className="mt-7 max-w-[56ch] text-base leading-7 text-warm-muted sm:text-[17px]">
+              <p className="mt-7 max-w-[56ch] text-base leading-7 text-white/85 sm:text-[17px]">
                 O Passepartout transforma a sua experiência num currículo europeu limpo e compatível com ATS — alinhado com o Europass e formatado segundo os padrões que os recrutadores em Berlim, Paris, Amesterdão e Lisboa esperam.
               </p>
               <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-                <Button asChild size="lg" className="h-12 rounded-sm bg-clay px-6 shadow-none hover:bg-clay-deep">
+                <Button asChild size="lg" className="h-12 rounded-sm bg-white px-6 text-[#342574] shadow-none hover:bg-sand">
                   <Link to="/criar">
                     Criar o meu currículo
                     <ArrowRight aria-hidden="true" />
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="h-12 rounded-sm border-ink/25 bg-transparent px-6 shadow-none hover:bg-paper">
+                <Button asChild variant="outline" size="lg" className="h-12 rounded-sm border-white/70 bg-transparent px-6 text-white shadow-none hover:bg-white/15">
                   <Link to="/criar" search={{ exemplo: true }}>Ver um exemplo</Link>
                 </Button>
               </div>
-              <ul className="mt-9 grid gap-3 border-t border-ink/10 pt-6 text-[12px] text-warm-muted sm:grid-cols-3 sm:gap-5">
+              <ul className="mt-9 grid gap-3 border-t border-white/25 pt-6 text-[12px] text-white/80 sm:grid-cols-3 sm:gap-5">
                 {["Sem marca de água", "Exportar em PDF (A4)", "Níveis de idiomas CEFR"].map((item) => (
                   <li key={item} className="flex items-center gap-2.5">
-                    <span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-forest" />
+                    <span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-white" />
                     {item}
                   </li>
                 ))}
