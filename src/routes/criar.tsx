@@ -238,7 +238,7 @@ function EditorPage() {
   const progress = Math.round(((section + 1) / SECTIONS.length) * 100);
 
   const sectionBody = useMemo(() => {
-    switch (SECTIONS[section].id) {
+    switch (SECTIONS[section]!.id) {
       case "dados":
         return (
           <div className="grid grid-cols-2 gap-3">
@@ -718,7 +718,7 @@ function EditorPage() {
               />
             </div>
             <h2 className="font-serif text-2xl tracking-tight">
-              {SECTIONS[section].label}
+              {SECTIONS[section]!.label}
             </h2>
           </div>
 
