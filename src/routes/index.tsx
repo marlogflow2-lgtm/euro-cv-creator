@@ -111,19 +111,19 @@ const focusStyles = "focus-visible:outline-none focus-visible:ring-2 focus-visib
 
 function Index() {
   return (
-    <div className="min-h-dvh bg-ivory font-sans text-ink selection:bg-sand">
+    <div className="min-h-dvh bg-ivory font-sans text-ink antialiased selection:bg-sand">
       <header className="border-b border-ink/10">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-5 sm:px-8 lg:px-12">
           <Link to="/" aria-label="Passepartout — página inicial" className={`flex items-center gap-3 rounded-sm ${focusStyles}`}>
             <div className="grid size-10 shrink-0 place-items-center rounded-full bg-forest">
-              <span className="font-serif text-sm leading-none text-paper">P</span>
+              <span className="font-sans font-semibold tracking-tight text-sm leading-none text-paper">P</span>
             </div>
             <div>
-              <div className="font-serif text-xl leading-none">Passepartout</div>
+              <div className="font-sans font-semibold tracking-tight text-xl leading-none">Passepartout</div>
               <div className="mt-1 text-[10px] uppercase tracking-[0.22em] text-warm-muted">Currículo Europeu</div>
             </div>
           </Link>
-          <nav aria-label="Navegação principal" className="hidden items-center gap-10 text-[12px] font-medium uppercase tracking-[0.12em] lg:flex">
+          <nav aria-label="Navegação principal" className="hidden items-center gap-10 text-sm font-medium lg:flex">
             <a href="#como" className={`rounded-sm text-warm-muted transition-colors hover:text-ink ${focusStyles}`}>Como funciona</a>
             <a href="#europass" className={`rounded-sm text-warm-muted transition-colors hover:text-ink ${focusStyles}`}>Formato Europass</a>
           </nav>
@@ -140,10 +140,10 @@ function Index() {
             <div className="lg:col-span-7 lg:pr-4">
               <div className="mb-7 flex items-center gap-4">
                 <span aria-hidden="true" className="h-px w-10 bg-white/70" />
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80">Feito para o mercado de trabalho europeu</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/80">Feito para o mercado de trabalho europeu</p>
               </div>
-              <h1 className="max-w-[15ch] font-serif text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">
-                Um currículo que se lê como uma <span className="italic text-white">carta bem guardada</span>.
+              <h1 className="max-w-[18ch] font-sans text-[2.5rem] font-semibold leading-[1.12] tracking-[-0.035em] text-balance sm:text-6xl lg:text-[4rem]">
+                Um currículo que se lê como uma <span className="font-bold text-white">carta bem guardada</span>.
               </h1>
               <p className="mt-7 max-w-[56ch] text-base leading-7 text-white/85 sm:text-[17px]">
                 O Passepartout transforma a sua experiência num currículo europeu limpo e compatível com ATS — alinhado com o Europass e formatado segundo os padrões que os recrutadores em Berlim, Paris, Amesterdão e Lisboa esperam.
@@ -175,15 +175,15 @@ function Index() {
         <section id="europass" className="scroll-mt-6 border-b border-ink/10 bg-paper/35">
           <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
             <div className="mb-10 grid gap-3 border-b border-ink/15 pb-7 md:grid-cols-[1fr_auto] md:items-end">
-              <h2 className="max-w-[18ch] font-serif text-4xl leading-tight sm:text-5xl">Alinhado com o formato Europass</h2>
+              <h2 className="max-w-[18ch] font-sans font-semibold tracking-tight text-3xl leading-tight sm:text-4xl">Alinhado com o formato Europass</h2>
               <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-clay">Padrão europeu</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3">
               {benefits.map((benefit, index) => (
                 <article key={benefit.t} className="border-b border-ink/10 py-8 last:border-b-0 md:border-b-0 md:border-l md:px-8 md:py-2 md:first:border-l-0 md:first:pl-0 md:last:pr-0">
-                  <span className="mb-8 block font-serif text-3xl text-clay/70">0{index + 1}</span>
-                  <h3 className="font-serif text-2xl">{benefit.t}</h3>
-                  <p className="mt-3 max-w-[34ch] text-[14px] leading-6 text-warm-muted">{benefit.d}</p>
+                  <span className="mb-8 block font-sans font-semibold tracking-tight text-3xl text-clay/70">0{index + 1}</span>
+                  <h3 className="font-sans font-semibold tracking-tight text-2xl">{benefit.t}</h3>
+                  <p className="mt-3 max-w-[34ch] text-[15px] leading-7 text-warm-muted">{benefit.d}</p>
                 </article>
               ))}
             </div>
@@ -193,14 +193,14 @@ function Index() {
         <section id="como" className="scroll-mt-6 border-b border-ink/10">
           <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
             <div className="mb-10 flex items-end justify-between border-b border-ink/15 pb-7">
-              <h2 className="font-serif text-4xl sm:text-5xl">Como funciona</h2>
+              <h2 className="font-sans font-semibold tracking-tight text-3xl sm:text-4xl">Como funciona</h2>
             </div>
             <ol className="grid grid-cols-1 md:grid-cols-3">
               {steps.map((step) => (
                 <li key={step.n} className="relative border-b border-ink/10 py-8 last:border-b-0 md:border-b-0 md:border-l md:px-8 md:py-2 md:first:border-l-0 md:first:pl-0 md:last:pr-0">
                   <span className="mb-8 block text-[11px] font-semibold tracking-[0.2em] text-clay">{step.n}</span>
-                  <h3 className="max-w-[18ch] font-serif text-2xl leading-snug">{step.t}</h3>
-                  <p className="mt-3 max-w-[35ch] text-[14px] leading-6 text-warm-muted">{step.d}</p>
+                  <h3 className="max-w-[18ch] font-sans font-semibold tracking-tight text-2xl leading-snug">{step.t}</h3>
+                  <p className="mt-3 max-w-[35ch] text-[15px] leading-7 text-warm-muted">{step.d}</p>
                 </li>
               ))}
             </ol>
@@ -211,8 +211,8 @@ function Index() {
       <footer className="bg-forest-deep text-sand">
         <div className="mx-auto flex max-w-[1440px] flex-col items-start justify-between gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-center lg:px-12">
           <div className="max-w-[38ch]">
-            <div className="font-serif text-2xl text-paper">Passepartout</div>
-            <p className="mt-2 text-[13px] leading-relaxed text-sand/80">O curriculum vitae, formatado para a forma como a Europa realmente contrata.</p>
+            <div className="font-sans font-semibold tracking-tight text-2xl text-paper">Passepartout</div>
+            <p className="mt-2 text-sm leading-relaxed text-sand/80">O curriculum vitae, formatado para a forma como a Europa realmente contrata.</p>
           </div>
           <Button asChild variant="secondary" className="h-11 rounded-sm px-5 shadow-none">
             <Link to="/criar">Começar agora</Link>
