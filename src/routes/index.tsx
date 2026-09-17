@@ -126,6 +126,7 @@ function Index() {
           <nav aria-label="Navegação principal" className="hidden items-center gap-10 text-sm font-medium lg:flex">
             <a href="#como" className={`rounded-sm text-warm-muted transition-colors hover:text-ink ${focusStyles}`}>Como funciona</a>
             <a href="#europass" className={`rounded-sm text-warm-muted transition-colors hover:text-ink ${focusStyles}`}>Formato Europass</a>
+            <a href="mailto:curriculumvitae@gmail.com" className={`rounded-sm text-warm-muted transition-colors hover:text-ink ${focusStyles}`}>Fale Conosco</a>
           </nav>
           <Button asChild className="h-11 rounded-sm px-4 shadow-none sm:px-5">
             <Link to="/criar">Criar o meu CV</Link>
