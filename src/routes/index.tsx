@@ -419,7 +419,7 @@ function Brand({ subtitle }: { subtitle: string }) {
 
 function ProductMockup() {
   return (
-    <div className="relative ml-auto w-full min-w-0 max-w-[860px]">
+    <div className="relative ml-auto w-full min-w-0 max-w-[790px]">
       <div className="absolute -inset-8 rounded-[3rem] bg-[#d4af37]/14 blur-3xl" />
       <img
         src="/jobpass-dashboard.svg"
@@ -515,17 +515,16 @@ function Index() {
             </div>
           </div>
 
-          <div className="relative mx-auto grid max-w-[1480px] items-center gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[minmax(0,.82fr)_minmax(0,1.18fr)] lg:py-24 xl:gap-12">
-            <div className="min-w-0 max-w-[650px]">
+          <div className="relative mx-auto grid max-w-[1480px] items-center gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:gap-12 lg:py-24 xl:gap-14">
+            <div className="min-w-0 w-full max-w-[690px]">
               <div className="inline-flex items-center gap-2 rounded-full border border-[#d4af37]/35 bg-[#fffaf0] px-3 py-1.5 text-xs font-medium text-[#8a681f]">
                 <Globe2 className="size-3.5" /> {t.eyebrow}
               </div>
-              <h1 className="mt-6 text-[2.8rem] font-semibold leading-[.98] tracking-[-.055em] sm:text-6xl lg:text-[4.2rem] xl:text-[4.65rem]">
+              <h1 className="mt-6 max-w-full text-[2.8rem] font-semibold leading-[.98] tracking-[-.055em] sm:text-6xl lg:text-[3.15rem] xl:text-[3.35rem]">
                 {lang === "pt" ? (
                   <>
-                    <span className="lg:whitespace-nowrap">Consiga sua vaga em qualquer país</span>
-                    <br />
-                    <span className="lg:whitespace-nowrap">antes mesmo de viajar.</span>
+                    <span className="block">Consiga sua vaga em qualquer país</span>
+                    <span className="block">antes mesmo de viajar.</span>
                   </>
                 ) : (
                   t.hero
