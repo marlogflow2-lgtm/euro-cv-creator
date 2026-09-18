@@ -77,13 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Passepartout — Currículo Europeu" },
+      { title: "JobPass — Emprego internacional" },
       {
         name: "description",
         content:
-          "Crie um currículo profissional em formato europeu, alinhado com o Europass, com pré-visualização ao vivo e exportação em PDF.",
+          "Prepare currículo, candidaturas, mensagens e entrevistas adaptados ao país onde você quer trabalhar.",
       },
-      { property: "og:title", content: "Passepartout — Currículo Europeu" },
+      { property: "og:title", content: "JobPass — Emprego internacional" },
       {
         property: "og:description",
         content:
@@ -118,7 +118,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="pt-PT">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
