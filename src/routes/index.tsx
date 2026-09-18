@@ -507,10 +507,14 @@ function Index() {
             className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(255,255,255,.11),transparent_25%),radial-gradient(circle_at_90%_80%,rgba(220,173,128,.2),transparent_28%)]"
           />
           <div className="relative mx-auto max-w-[1280px] px-5 pt-9 sm:px-8 sm:pt-12">
-            <div className="mx-auto flex max-w-4xl flex-col items-center rounded-2xl border border-white/15 bg-white/10 px-5 py-4 text-center shadow-lg backdrop-blur sm:px-8">
-              <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="relative mx-auto flex max-w-4xl flex-col items-center overflow-hidden rounded-2xl border border-[#f4c86a]/30 bg-[linear-gradient(135deg,rgba(255,255,255,.12),rgba(244,200,106,.08))] px-5 py-4 text-center shadow-[0_18px_50px_rgba(0,0,0,.16),0_0_28px_rgba(244,200,106,.08)] backdrop-blur sm:px-8">
+              <div aria-hidden className="pointer-events-none absolute inset-x-12 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(244,200,106,.75),transparent)]" />
+              <div className="relative flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
                 <p className="text-xl font-bold leading-tight sm:text-2xl">{t.proof}</p>
-                <span className="shrink-0 text-sm tracking-[.12em] text-[#ffd58f]" aria-label="5 estrelas">
+                <span
+                  className="shrink-0 text-[22px] font-bold leading-none tracking-[.08em] text-[#f4c86a] drop-shadow-[0_2px_10px_rgba(244,200,106,.28)] sm:text-[26px]"
+                  aria-label="5 estrelas"
+                >
                   ★★★★★
                 </span>
               </div>
@@ -567,7 +571,7 @@ function Index() {
                       <span className="block truncate text-[10px] text-warm-muted">{email}</span>
                     </div>
                     <span
-                      className="shrink-0 text-[10px] tracking-[.06em] text-[#c98632]"
+                      className="shrink-0 text-[12px] font-semibold leading-none tracking-[.05em] text-[#d69a3a]"
                       aria-label="5 estrelas"
                     >
                       ★★★★★
