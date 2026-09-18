@@ -530,8 +530,12 @@ function Index() {
                   t.hero
                 )}
               </h1>
-              <p className="mt-6 max-w-[57ch] text-base leading-7 text-[#6b604e] sm:text-lg">
-                {t.heroSub}
+              <p className="mt-6 max-w-[57ch] text-base leading-7 text-[#6b604e] sm:text-lg [&_br]:hidden">
+                {t.heroSub.split("\n").map((line, i) => (
+                  <span key={i} className="block">
+                    {line}
+                  </span>
+                ))}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button
