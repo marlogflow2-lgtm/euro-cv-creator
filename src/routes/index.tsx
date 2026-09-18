@@ -54,7 +54,13 @@ function Index(){
    <div className="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-4 sm:px-8">
     <Brand/>
     <nav className="hidden items-center gap-7 text-sm text-warm-muted md:flex"><a href="#recebe" className="hover:text-ink">O que você recebe</a><a href="#como" className="hover:text-ink">Como funciona</a><a href="#preco" className="hover:text-ink">Preço</a><a href="#faq" className="hover:text-ink">Dúvidas</a></nav>
-    <Button asChild className="rounded-full px-5"><Link to="/criar">Criar meu JobPass</Link></Button>
+    <div className="flex flex-col items-center gap-2">
+     <Button asChild className="rounded-full px-5"><Link to="/criar">Criar meu JobPass</Link></Button>
+     <div className="flex max-w-[260px] items-center justify-center gap-2 rounded-full border border-clay/25 bg-sand/80 px-3 py-1.5 text-center shadow-sm">
+      <span className="shrink-0 text-[11px] tracking-[.08em] text-[#b8752f]" aria-label="5 estrelas">★★★★★</span>
+      <span className="text-[10px] font-medium leading-tight text-ink/75"><strong className="font-bold text-forest">+8 mil imigrantes</strong> já conseguiram emprego com nossas estratégias</span>
+     </div>
+    </div>
    </div>
   </header>
 
