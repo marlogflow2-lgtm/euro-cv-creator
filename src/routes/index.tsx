@@ -109,6 +109,36 @@ function Index(){
     </div>
    </section>
 
+   <section id="prova-social" className="border-y border-ink/10 bg-[#f3eee4]">
+    <div className="mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24">
+     <div className="grid gap-10 lg:grid-cols-[.72fr_1.28fr] lg:items-start">
+      <div>
+       <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Confiança que se constrói com resultado real</p>
+       <h2 className="mt-3 text-4xl font-semibold tracking-tight">Prova social sem exagero e sem promessa vazia.</h2>
+       <p className="mt-5 leading-7 text-warm-muted">Esta área está preparada para exibir uma métrica auditável de usuários atendidos e avaliações autorizadas. O JobPass não publica números ou depoimentos como reais sem comprovação.</p>
+       <div className="mt-7 rounded-2xl border border-forest/15 bg-paper p-5">
+        <p className="text-xs font-semibold uppercase tracking-[.16em] text-forest">Métrica verificada</p>
+        <p className="mt-2 text-3xl font-semibold tracking-tight">Insira aqui seu número comprovado</p>
+        <p className="mt-2 text-sm leading-6 text-warm-muted">Ex.: “+8 mil imigrantes atendidos” somente quando você tiver uma base, relatório, CRM, checkout ou outra evidência que sustente essa afirmação.</p>
+       </div>
+      </div>
+      <div>
+       <div className="mb-4 flex items-end justify-between gap-4">
+        <div><p className="text-sm font-semibold">Avaliações verificadas</p><p className="mt-1 text-xs text-warm-muted">4 espaços prontos para feedbacks reais de clientes.</p></div>
+        <ShieldCheck className="size-5 text-forest"/>
+       </div>
+       <div className="grid gap-4 sm:grid-cols-2">
+        {[1,2,3,4].map((n)=><article key={n} className="rounded-2xl border border-ink/10 bg-paper p-6">
+         <div className="mb-5 flex items-center gap-1 text-clay" aria-label="Espaço reservado para avaliação verificada"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div>
+         <p className="text-sm leading-6 text-warm-muted">Depoimento real do cliente entra aqui depois de autorizado. Evite textos genéricos: quanto mais específico sobre o problema e o resultado, mais confiança ele gera.</p>
+         <div className="mt-5 border-t border-ink/10 pt-4"><p className="text-sm font-semibold">Cliente verificado #{n}</p><p className="mt-1 text-xs text-warm-muted">Nome, destino e profissão</p></div>
+        </article>)}
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
    <section id="preco" className="scroll-mt-24 border-y border-ink/10 bg-[#e8dfcf]"><div className="mx-auto max-w-[980px] px-5 py-20 text-center sm:px-8 sm:py-24"><p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Oferta de lançamento</p><h2 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Comece preparado, sem gastar uma fortuna.</h2><p className="mx-auto mt-4 max-w-2xl text-warm-muted">A estrutura de pagamento será conectada ao checkout escolhido. O preço abaixo é a proposta inicial para validação do produto.</p><div className="mx-auto mt-9 max-w-lg rounded-3xl border border-ink/10 bg-paper p-7 text-left shadow-[var(--shadow-paper)] sm:p-9"><p className="text-sm font-semibold text-forest">JobPass Essencial</p><div className="mt-3 flex items-end gap-2"><span className="text-5xl font-semibold tracking-tight">€12,90</span><span className="pb-1 text-sm text-warm-muted">pagamento único</span></div><ul className="mt-7 space-y-3 text-sm">{["Currículo adaptado + ATS","Versão no idioma local","Carta e mensagens de candidatura","Preparação para entrevista","Sites e termos de busca","Plano de candidatura de 7 dias"].map(x=><li key={x} className="flex gap-3"><Check className="size-5 shrink-0 text-forest"/>{x}</li>)}</ul><Button asChild size="lg" className="mt-8 h-13 w-full rounded-full"><Link to="/criar">Criar meu JobPass <ArrowRight/></Link></Button><p className="mt-3 text-center text-[11px] text-warm-muted">Checkout ainda não conectado nesta versão.</p></div></div></section>
 
    <section id="faq" className="scroll-mt-24 mx-auto max-w-[980px] px-5 py-20 sm:px-8 sm:py-24"><p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Antes de começar</p><h2 className="mt-3 text-4xl font-semibold tracking-tight">Perguntas frequentes</h2><div className="mt-8 divide-y divide-ink/10 border-y border-ink/10">{faq.map(([q,a])=><details key={q} className="group py-5"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-semibold">{q}<span className="text-xl text-clay group-open:rotate-45">+</span></summary><p className="mt-3 max-w-3xl text-sm leading-6 text-warm-muted">{a}</p></details>)}</div></section>
