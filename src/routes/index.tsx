@@ -47,9 +47,9 @@ const copy = {
     proof: "+8 mil imigrantes conseguiram emprego no exterior com nossas estratégias",
     proofSub: "Experiência real da nossa agência, agora transformada em uma ferramenta digital.",
     eyebrow: "Para quem quer trabalhar em outro país",
-    hero: "Chegue com o currículo pronto. E sabendo o que fazer depois.",
+    hero: "Consiga oportunidades de emprego em qualquer país antes mesmo de viajar.",
     heroSub:
-      "O JobPass transforma sua experiência em um kit de candidatura adaptado ao seu destino: currículo, ATS, idioma local, mensagens, entrevista e plano para começar a buscar vagas.",
+      "A JobPass te fornece o kit perfeito para se candidatar da maneira correta às vagas do seu interesse, com estratégias usadas por imigrantes de todo o mundo — ajudando você a encontrar as oportunidades certas e se aproximar do sonho de viver fora do país.",
     heroCta: "Montar meu JobPass",
     minutes: "Leva poucos minutos para começar",
     trust: ["Sem inventar experiência", "Adaptado ao destino", "Pronto para usar"],
@@ -104,9 +104,9 @@ const copy = {
     proof: "+8 mil inmigrantes consiguieron empleo en el extranjero con nuestras estrategias",
     proofSub: "Experiencia real de nuestra agencia, ahora convertida en una herramienta digital.",
     eyebrow: "Para quienes quieren trabajar en otro país",
-    hero: "Llega con tu currículum listo. Y sabiendo qué hacer después.",
+    hero: "Consigue oportunidades de empleo en cualquier país incluso antes de viajar.",
     heroSub:
-      "JobPass convierte tu experiencia en un kit de candidatura adaptado a tu destino: currículum, ATS, idioma local, mensajes, entrevista y plan para empezar a buscar empleo.",
+      "JobPass te ofrece el kit ideal para postularte correctamente a las vacantes que te interesan, con estrategias utilizadas por inmigrantes de todo el mundo para encontrar las oportunidades adecuadas y acercarse al sueño de vivir en otro país.",
     heroCta: "Crear mi JobPass",
     minutes: "Solo toma unos minutos empezar",
     trust: ["Sin inventar experiencia", "Adaptado al destino", "Listo para usar"],
@@ -161,9 +161,9 @@ const copy = {
     proof: "+8,000 immigrants landed jobs abroad using our strategies",
     proofSub: "Real experience from our agency, now turned into a digital tool.",
     eyebrow: "For people who want to work in another country",
-    hero: "Arrive with your CV ready. And know what to do next.",
+    hero: "Find job opportunities in any country before you even travel.",
     heroSub:
-      "JobPass turns your experience into a destination-ready application kit: CV, ATS version, local language, messages, interview prep and a job-search plan.",
+      "JobPass gives you the right kit to apply properly for the roles you want, using strategies followed by immigrants around the world to identify the right opportunities and move closer to the goal of living abroad.",
     heroCta: "Build my JobPass",
     minutes: "It only takes a few minutes to start",
     trust: ["No made-up experience", "Adapted to your destination", "Ready to use"],
@@ -218,9 +218,9 @@ const copy = {
     proof: "+8 000 immigrés ont trouvé un emploi à l'étranger grâce à nos stratégies",
     proofSub: "L'expérience réelle de notre agence, désormais transformée en outil numérique.",
     eyebrow: "Pour ceux qui veulent travailler dans un autre pays",
-    hero: "Arrivez avec votre CV prêt. Et sachez quoi faire ensuite.",
+    hero: "Trouvez des opportunités d'emploi dans n'importe quel pays avant même de voyager.",
     heroSub:
-      "JobPass transforme votre expérience en kit de candidature adapté à votre destination : CV, ATS, langue locale, messages, entretien et plan de recherche d'emploi.",
+      "JobPass vous fournit le kit idéal pour postuler correctement aux offres qui vous intéressent, avec des stratégies utilisées par des immigrés du monde entier pour repérer les bonnes opportunités et vous rapprocher de votre projet de vivre à l'étranger.",
     heroCta: "Créer mon JobPass",
     minutes: "Quelques minutes suffisent pour commencer",
     trust: ["Aucune expérience inventée", "Adapté à la destination", "Prêt à utiliser"],
@@ -275,9 +275,9 @@ const copy = {
     proof: "+8.000 Einwanderer fanden mit unseren Strategien einen Job im Ausland",
     proofSub: "Echte Erfahrung unserer Agentur, jetzt als digitales Tool verfügbar.",
     eyebrow: "Für alle, die in einem anderen Land arbeiten möchten",
-    hero: "Komm mit fertigem Lebenslauf an. Und wisse, was als Nächstes zu tun ist.",
+    hero: "Finde Jobchancen in jedem Land, noch bevor du überhaupt reist.",
     heroSub:
-      "JobPass macht aus deiner Erfahrung ein auf dein Zielland abgestimmtes Bewerbungspaket: Lebenslauf, ATS-Version, Landessprache, Nachrichten, Interviewvorbereitung und Jobsuchplan.",
+      "JobPass gibt dir das passende Paket, um dich richtig auf interessante Stellen zu bewerben – mit Strategien, die von Einwanderern auf der ganzen Welt genutzt werden, um die richtigen Chancen zu finden und dem Traum vom Leben im Ausland näherzukommen.",
     heroCta: "Mein JobPass erstellen",
     minutes: "Der Start dauert nur wenige Minuten",
     trust: ["Keine erfundene Erfahrung", "Auf das Zielland abgestimmt", "Sofort nutzbar"],
@@ -332,9 +332,9 @@ const copy = {
     proof: "+8.000 immigrati hanno trovato lavoro all'estero con le nostre strategie",
     proofSub: "Esperienza reale della nostra agenzia, ora trasformata in uno strumento digitale.",
     eyebrow: "Per chi vuole lavorare in un altro paese",
-    hero: "Arriva con il CV pronto. E sapendo cosa fare dopo.",
+    hero: "Trova opportunità di lavoro in qualsiasi paese ancora prima di partire.",
     heroSub:
-      "JobPass trasforma la tua esperienza in un kit di candidatura adatto alla destinazione: CV, ATS, lingua locale, messaggi, colloquio e piano di ricerca lavoro.",
+      "JobPass ti fornisce il kit ideale per candidarti nel modo corretto alle posizioni che ti interessano, con strategie usate da immigrati di tutto il mondo per individuare le opportunità giuste e avvicinarti al sogno di vivere all'estero.",
     heroCta: "Crea il mio JobPass",
     minutes: "Bastano pochi minuti per iniziare",
     trust: ["Nessuna esperienza inventata", "Adattato alla destinazione", "Pronto da usare"],
@@ -385,10 +385,10 @@ const copy = {
 } as const;
 
 const testimonials = [
-  ["Renata", "Super recomendo!! Consegui meu emprego até antes da viagem!"],
-  ["Jorge", "Ótimas indicações de vaga pra minha área"],
-  ["Yusuf", "Fui selecionado pra 3 entrevistas"],
-  ["Juan", "Viajo semana que vem e já consegui meu emprego graças as estratégias"],
+  ["Renata Rivera", "renatariveluz@gmai.com", "Super recomendo!! Consegui meu emprego até antes da viagem!"],
+  ["Jorge Miguel", "migueljorgecol@gmail.com", "Ótimas indicações de vaga pra minha área"],
+  ["Yusuf Chadli", "yusufkarim33@gmail.com", "Fui selecionado pra 3 entrevistas"],
+  ["Juan Pablo", "juviveros834@gmail.com", "Viajo semana que vem e já consegui meu emprego graças as estratégias"],
 ] as const;
 
 const featureIcons = [
@@ -514,12 +514,12 @@ function Index() {
           />
           <div className="relative mx-auto max-w-[1280px] px-5 pt-9 sm:px-8 sm:pt-12">
             <div className="mx-auto flex max-w-4xl flex-col items-center rounded-2xl border border-white/15 bg-white/10 px-5 py-4 text-center shadow-lg backdrop-blur sm:px-8">
-              <div className="flex items-center gap-2 text-[#ffd58f]">
-                <span className="text-sm tracking-[.12em]">★★★★★</span>
-                              </div>
-              <p className="mt-2 text-xl font-bold leading-tight sm:text-2xl">
-                {t.proof}
-              </p>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <p className="text-xl font-bold leading-tight sm:text-2xl">{t.proof}</p>
+                <span className="shrink-0 text-sm tracking-[.12em] text-[#ffd58f]" aria-label="5 estrelas">
+                  ★★★★★
+                </span>
+              </div>
               <p className="mt-1 text-xs text-paper/65">{t.proofSub}</p>
             </div>
           </div>
@@ -563,13 +563,16 @@ function Index() {
               {t.reviewsTitle}
             </p>
             <div className="grid gap-2 md:grid-cols-4">
-              {testimonials.map(([name, quote]) => (
+              {testimonials.map(([name, email, quote]) => (
                 <article
-                  key={name}
+                  key={email}
                   className="rounded-xl border border-ink/10 bg-ivory/70 px-4 py-3"
                 >
-                  <div className="flex items-center justify-between gap-3">
-                    <b className="text-sm">{name}</b>
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <b className="block text-sm">{name}</b>
+                      <span className="block truncate text-[10px] text-warm-muted">{email}</span>
+                    </div>
                     <span
                       className="shrink-0 text-[10px] tracking-[.06em] text-[#c98632]"
                       aria-label="5 estrelas"
