@@ -142,3 +142,191 @@
     margin: 0;
   }
 }
+
+
+/* Screen UI: the printable document keeps its original typography and palette. */
+@media screen {
+  :root {
+    --ivory: #f4f7fb;
+    --paper: #ffffff;
+    --ink: #14243b;
+    --forest: #2458d3;
+    --forest-deep: #10213d;
+    --clay: #167d83;
+    --clay-deep: #106167;
+    --sand: #e5edf8;
+    --warm-muted: #57677e;
+    --radius: 0.875rem;
+  }
+  body { -webkit-font-smoothing: antialiased; }
+  :is(a, button, input, textarea, select):focus-visible {
+    outline: 3px solid #398bda;
+    outline-offset: 4px;
+  }
+  :is(button, a, input, textarea, select) {
+    transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+  }
+  button:not(:disabled), a { -webkit-tap-highlight-color: transparent; }
+  button:not(:disabled) { cursor: pointer; }
+  body:has(#contato) header {
+    position: relative;
+    z-index: 10;
+    background: #ffffff;
+    border-color: #e5eaf2;
+  }
+  body:has(#contato) header > div { max-width: 1280px; padding-top: 20px; padding-bottom: 20px; }
+  body:has(#contato) header nav { gap: 24px; }
+  body:has(#contato) header a[aria-label] > div:first-child {
+    border-radius: 14px;
+    background: linear-gradient(145deg, #2866df, #1b3e94);
+    box-shadow: 0 5px 12px #2458d326;
+  }
+  body:has(#contato) :is(a[href="/criar"], a[href*="exemplo=true"], #contato a[href^="mailto:"]:has(svg)) {
+    border-radius: 12px;
+    min-height: 46px;
+    font-weight: 600;
+  }
+  body:has(#contato) main > section:first-child {
+    margin: 12px 24px 0;
+    border: 1px solid #183c65;
+    border-radius: 32px;
+    background: radial-gradient(ellipse at 95% 5%, #146879 0%, transparent 48%), linear-gradient(125deg, #10213d, #193a66);
+  }
+  body:has(#contato) main > section:first-child > div[aria-hidden] { opacity: .3; }
+  body:has(#contato) main > section:first-child > div:last-child { max-width: 1280px; gap: 48px; }
+  body:has(#contato) h1 { font-size: clamp(2.5rem, 4.7vw, 4.3rem); line-height: 1.08; letter-spacing: -.045em; }
+  body:has(#contato) h1 span { color: #85e6d3; }
+  body:has(#contato) main > section:first-child a[href="/criar"] {
+    background: #9befdc;
+    color: #102d36;
+    box-shadow: 0 8px 24px #00000020;
+  }
+  body:has(#contato) main > section:first-child a[href="/criar"]:hover { background: #c1f8eb; }
+  body:has(#contato) main > section:first-child a[href*="exemplo=true"] {
+    background: #ffffff0a;
+    border-color: #ffffff70;
+    color: #ffffff;
+  }
+  body:has(#contato) main > section:first-child a[href*="exemplo=true"]:hover { background: #ffffff18; }
+  [aria-label="Pré-visualização de currículo"] { color: #14243b; }
+  [aria-label="Pré-visualização de currículo"] > div:last-child {
+    border-radius: 16px;
+    background: #ffffff;
+    border-color: #dce5ef;
+    box-shadow: 0 24px 80px #00000030;
+  }
+  [aria-label="Pré-visualização de currículo"] > div[aria-hidden] { border-radius: 16px; }
+  [aria-label="Pré-visualização de currículo"] .font-serif { font-family: var(--font-sans); font-weight: 600; letter-spacing: -.03em; }
+  body:has(#contato) :is(#europass, #como) { border: 0; background: transparent; }
+  body:has(#contato) :is(#europass, #como) > div { max-width: 1280px; padding-top: 80px; padding-bottom: 32px; }
+  body:has(#contato) :is(#europass, #como) > div > div:first-child { border: 0; margin-bottom: 32px; padding-bottom: 0; }
+  body:has(#contato) :is(h2, h3) { letter-spacing: -.035em; }
+  body:has(#contato) #europass h2 { max-width: 24ch; }
+  body:has(#contato) #europass > div > div:last-child,
+  body:has(#contato) #como ol { gap: 20px; }
+  body:has(#contato) #europass article,
+  body:has(#contato) #como li {
+    padding: 28px;
+    border: 1px solid #e0e7f0;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 20px #17345804;
+  }
+  body:has(#contato) #europass article > span,
+  body:has(#contato) #como li > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    background: #eaf1ff;
+    color: #2458d3;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  body:has(#contato) :is(#europass, #como) h3 { font-size: 20px; line-height: 1.4; }
+  body:has(#contato) #contato {
+    max-width: 1184px;
+    margin: 80px auto;
+    border: 1px solid #dce6f0;
+    border-radius: 24px;
+    background: linear-gradient(120deg, #edf3ff, #edf8f6);
+    scroll-margin-top: 24px;
+  }
+  body:has(#contato) #contato > div { padding: 48px; gap: 48px; }
+  body:has(#contato) #contato > div > div:last-child {
+    background: #ffffff;
+    border: 1px solid #e0e8ef;
+    border-radius: 20px;
+    box-shadow: 0 12px 32px #1b365909;
+  }
+  body:has(#contato) footer { background: #10213d; }
+  body:has(#contato) footer > div { max-width: 1280px; }
+
+  /* Editor controls are styled separately from the A4 document. */
+  body:has(#cv-sheet) > div:has(> header) { min-height: 100dvh; }
+  body:has(#cv-sheet) header { background: #ffffff; padding-inline: 24px; gap: 16px; }
+  body:has(#cv-sheet) :is(header, aside) .font-serif { font-family: var(--font-sans); font-weight: 600; }
+  body:has(#cv-sheet) header nav button { border-radius: 9px; padding: 9px 10px; }
+  body:has(#cv-sheet) aside { background: #ffffff; padding: 32px; }
+  body:has(#cv-sheet) aside h2 { font-size: 28px; margin-top: 24px; }
+  body:has(#cv-sheet) aside label > span { font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+  body:has(#cv-sheet) aside :is(input, select, textarea) {
+    background: #f8faff;
+    border: 1px solid #dce5f0;
+    border-radius: 10px;
+    box-shadow: none;
+    font-size: 16px;
+  }
+  body:has(#cv-sheet) aside :is(input, select) { height: 46px; }
+  body:has(#cv-sheet) aside textarea { padding: 12px; }
+  body:has(#cv-sheet) aside :is(input, select, textarea):focus { border-color: #2458d3; box-shadow: 0 0 0 3px #2458d315; }
+  body:has(#cv-sheet) :is(header, aside) button { min-height: 40px; border-radius: 10px; }
+  body:has(#cv-sheet) header > div:last-child > button { background: #2458d3; color: white; }
+  body:has(#cv-sheet) main { background: radial-gradient(ellipse at top, #e8f0ff, #f0f4f8); padding: 40px; }
+  #cv-sheet {
+    --paper: #fbf8f1;
+    --ink: #1b2119;
+    --forest: #2c4a38;
+    --clay: #bd6a4a;
+    --sand: #e4d9c4;
+    --warm-muted: #6f6a5c;
+    color: var(--ink);
+  }
+  @media (max-width: 1023px) {
+    body:has(#contato) header > div { flex-wrap: wrap; gap: 16px; }
+    body:has(#contato) header nav { display: flex; order: 3; width: 100%; justify-content: center; gap: 24px; font-size: 13px; }
+    body:has(#contato) main > section:first-child { margin-inline: 16px; border-radius: 24px; }
+    body:has(#contato) #contato { margin: 56px 24px; }
+    body:has(#cv-sheet) .h-screen { height: auto; overflow: visible; }
+    body:has(#cv-sheet) .h-screen > div.flex-1 { overflow: visible; }
+    body:has(#cv-sheet) aside { overflow: visible; border-right: 0; }
+    body:has(#cv-sheet) .lg\:hidden:has(> #cv-sheet) { display: flex; justify-content: center; padding-top: 32px; }
+  }
+  @media (max-width: 639px) {
+    body:has(#contato) header > div { padding: 16px 20px; }
+    body:has(#contato) header nav { gap: 18px; font-size: 12px; }
+    body:has(#contato) main > section:first-child { margin: 8px; border-radius: 20px; }
+    body:has(#contato) main > section:first-child > div:last-child { padding: 40px 24px; }
+    body:has(#contato) :is(#europass, #como) > div { padding-top: 48px; padding-inline: 24px; }
+    body:has(#contato) #contato { margin: 40px 16px; }
+    body:has(#contato) #contato > div { padding: 28px 20px; gap: 28px; }
+    body:has(#cv-sheet) header { height: auto; min-height: 72px; padding: 12px 16px; flex-wrap: wrap; }
+    body:has(#cv-sheet) aside { padding: 24px 20px; }
+    body:has(#cv-sheet) aside .grid-cols-2 { grid-template-columns: minmax(0, 1fr); }
+    body:has(#cv-sheet) aside .col-span-2 { grid-column: auto; }
+    body:has(#cv-sheet) aside > div:last-child { gap: 8px; }
+    body:has(#cv-sheet) aside > div:last-child > div { gap: 4px; }
+    body:has(#cv-sheet) aside > div:last-child > div span { width: 10px; }
+    body:has(#cv-sheet) .lg\:hidden:has(> #cv-sheet) { padding-inline: 12px; }
+    #cv-sheet { padding: 20px; }
+    #cv-sheet > div:first-child { flex-wrap: wrap; }
+    #cv-sheet > div:first-child > div:last-child { text-align: left; overflow-wrap: anywhere; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
