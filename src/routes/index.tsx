@@ -404,7 +404,7 @@ function detectLanguage(): Lang {
 function Brand({ subtitle }: { subtitle: string }) {
   return (
     <Link to="/" className="flex items-center gap-3">
-      <span className="grid size-10 place-items-center rounded-xl bg-[#2f5fd7] font-bold text-white">
+      <span className="grid size-10 place-items-center rounded-xl bg-[#b8892e] font-bold text-white shadow-[0_6px_18px_rgba(184,137,46,.22)]">
         J
       </span>
       <div className="leading-none">
@@ -419,12 +419,12 @@ function Brand({ subtitle }: { subtitle: string }) {
 
 function ProductMockup() {
   return (
-    <div className="relative mx-auto max-w-[590px]">
-      <div className="absolute -inset-8 rounded-[2.5rem] bg-white/10 blur-2xl" />
+    <div className="relative mx-auto w-full max-w-[720px] lg:max-w-[760px]">
+      <div className="absolute -inset-10 rounded-[2.8rem] bg-[#d4af37]/12 blur-3xl" />
       <img
         src="/jobpass-dashboard.svg"
         alt="JobPass dashboard"
-        className="relative w-full rounded-[2rem] shadow-2xl"
+        className="relative w-full rounded-[2rem] border border-[#d4af37]/20 shadow-[0_30px_80px_rgba(122,91,29,.16)]"
         loading="eager"
       />
     </div>
@@ -476,8 +476,8 @@ function Index() {
   const t = copy[lang];
 
   return (
-    <div className="min-h-dvh bg-ivory text-ink">
-      <header className="sticky top-0 z-30 border-b border-ink/10 bg-ivory/95 backdrop-blur">
+    <div className="min-h-dvh bg-white text-[#211b12]">
+      <header className="sticky top-0 z-30 border-b border-[#d4af37]/20 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-5 py-4 sm:px-8">
           <Brand subtitle={t.brand} />
           <nav className="hidden items-center gap-7 text-sm text-warm-muted md:flex">
@@ -493,7 +493,7 @@ function Index() {
           </nav>
           <div className="flex items-center gap-3">
             <LanguageSwitcher lang={lang} setLang={setLang} />
-            <Button asChild className="rounded-full bg-[#2f5fd7] px-5 hover:bg-[#244fc1]">
+            <Button asChild className="rounded-full bg-[#b8892e] px-5 text-white shadow-[0_8px_22px_rgba(184,137,46,.2)] hover:bg-[#9f7527]">
               <Link to="/criar">{t.cta}</Link>
             </Button>
           </div>
@@ -501,50 +501,44 @@ function Index() {
       </header>
 
       <main>
-        <section className="relative overflow-hidden bg-[linear-gradient(125deg,#102e28_0%,#1c5145_55%,#70483b_100%)] text-paper">
+        <section className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#fffdf7_58%,#f7f0df_100%)] text-[#211b12]">
           <div
             aria-hidden
-            className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(255,255,255,.11),transparent_25%),radial-gradient(circle_at_90%_80%,rgba(220,173,128,.2),transparent_28%)]"
+            className="absolute inset-0 bg-[radial-gradient(circle_at_14%_10%,rgba(212,175,55,.12),transparent_24%),radial-gradient(circle_at_88%_78%,rgba(184,137,46,.1),transparent_28%)]"
           />
           <div className="relative mx-auto max-w-[1280px] px-5 pt-9 sm:px-8 sm:pt-12">
-            <div className="relative mx-auto flex max-w-4xl flex-col items-center overflow-hidden rounded-2xl border border-[#f4c86a]/30 bg-[linear-gradient(135deg,rgba(255,255,255,.12),rgba(244,200,106,.08))] px-5 py-4 text-center shadow-[0_18px_50px_rgba(0,0,0,.16),0_0_28px_rgba(244,200,106,.08)] backdrop-blur sm:px-8">
-              <div aria-hidden className="pointer-events-none absolute inset-x-12 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(244,200,106,.75),transparent)]" />
-              <div className="relative flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-                <p className="text-xl font-bold leading-tight sm:text-2xl">{t.proof}</p>
-                <span
-                  className="shrink-0 text-[22px] font-bold leading-none tracking-[.08em] text-[#f4c86a] drop-shadow-[0_2px_10px_rgba(244,200,106,.28)] sm:text-[26px]"
-                  aria-label="5 estrelas"
-                >
-                  ★★★★★
-                </span>
+            <div className="relative mx-auto flex max-w-4xl flex-col items-center overflow-hidden rounded-2xl border border-[#d4af37]/55 bg-white px-5 py-4 text-center shadow-[0_14px_34px_rgba(122,91,29,.09)] sm:px-8">
+              <div aria-hidden className="pointer-events-none absolute inset-x-8 top-0 h-[2px] bg-[linear-gradient(90deg,transparent,#d4af37,transparent)]" />
+              <div className="relative flex items-center justify-center">
+                <p className="text-xl font-bold leading-tight text-[#3a2d16] sm:text-2xl">{t.proof}</p>
               </div>
             </div>
           </div>
 
-          <div className="relative mx-auto grid max-w-[1280px] items-center gap-14 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[1.05fr_.95fr] lg:py-24">
+          <div className="relative mx-auto grid max-w-[1380px] items-center gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[.88fr_1.12fr] lg:py-24">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs text-paper/80">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#d4af37]/35 bg-[#fffaf0] px-3 py-1.5 text-xs font-medium text-[#8a681f]">
                 <Globe2 className="size-3.5" /> {t.eyebrow}
               </div>
               <h1 className="mt-6 max-w-[13ch] text-[2.8rem] font-semibold leading-[1.02] tracking-[-.05em] sm:text-6xl lg:text-[4.3rem]">
                 {t.hero}
               </h1>
-              <p className="mt-6 max-w-[57ch] text-base leading-7 text-paper/75 sm:text-lg">
+              <p className="mt-6 max-w-[57ch] text-base leading-7 text-[#6b604e] sm:text-lg">
                 {t.heroSub}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button
                   asChild
                   size="lg"
-                  className="h-12 rounded-full bg-paper px-7 text-forest hover:bg-sand"
+                  className="h-12 rounded-full bg-[#b8892e] px-7 text-white shadow-[0_10px_26px_rgba(184,137,46,.22)] hover:bg-[#9f7527]"
                 >
                   <Link to="/criar">
                     {t.heroCta} <ArrowRight />
                   </Link>
                 </Button>
-                <span className="text-sm text-paper/60">{t.minutes}</span>
+                <span className="text-sm text-[#7b705f]">{t.minutes}</span>
               </div>
-              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-paper/65">
+              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium text-[#8a681f]">
                 {t.trust.map((item) => (
                   <span key={item}>✓ {item}</span>
                 ))}
@@ -554,7 +548,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="border-b border-ink/10 bg-paper">
+        <section className="border-b border-[#d4af37]/15 bg-white">
           <div className="mx-auto max-w-[1280px] px-5 py-7 sm:px-8">
             <p className="mb-4 text-center text-[11px] font-semibold uppercase tracking-[.18em] text-warm-muted">
               {t.reviewsTitle}
@@ -563,7 +557,7 @@ function Index() {
               {testimonials.map(([name, email, quote]) => (
                 <article
                   key={email}
-                  className="rounded-xl border border-ink/10 bg-ivory/70 px-4 py-3"
+                  className="rounded-xl border border-[#d4af37]/20 bg-white px-4 py-3 shadow-[0_8px_22px_rgba(122,91,29,.05)]"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
@@ -571,7 +565,7 @@ function Index() {
                       <span className="block truncate text-[10px] text-warm-muted">{email}</span>
                     </div>
                     <span
-                      className="shrink-0 text-[12px] font-semibold leading-none tracking-[.05em] text-[#d69a3a]"
+                      className="shrink-0 text-[12px] font-semibold leading-none tracking-[.05em] text-[#d4af37]"
                       aria-label="5 estrelas"
                     >
                       ★★★★★
@@ -588,10 +582,10 @@ function Index() {
 
         <section
           id="recebe"
-          className="scroll-mt-24 mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24"
+          className="scroll-mt-24 mx-auto max-w-[1280px] bg-white px-5 py-20 sm:px-8 sm:py-24"
         >
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">
+            <p className="text-xs font-semibold uppercase tracking-[.2em] text-[#9b7728]">
               {t.deliverEyebrow}
             </p>
             <h2 className="mt-3 text-4xl font-semibold tracking-[-.035em] sm:text-5xl">
@@ -608,10 +602,10 @@ function Index() {
               return (
                 <article
                   key={title}
-                  className="group rounded-2xl border border-ink/10 bg-paper p-6 transition-transform hover:-translate-y-1"
+                  className="group rounded-2xl border border-[#d4af37]/20 bg-white p-6 shadow-[0_10px_28px_rgba(122,91,29,.05)] transition-transform hover:-translate-y-1"
                 >
-                  <span className="grid size-11 place-items-center rounded-xl bg-forest/10">
-                    <Icon className="size-5 text-forest" />
+                  <span className="grid size-11 place-items-center rounded-xl bg-[#fff6dc]">
+                    <Icon className="size-5 text-[#a57d27]" />
                   </span>
                   <h3 className="mt-5 text-xl font-semibold">{title}</h3>
                   <p className="mt-2 text-sm leading-6 text-warm-muted">
@@ -623,11 +617,11 @@ function Index() {
           </div>
         </section>
 
-        <section id="como" className="scroll-mt-24 border-y border-ink/10 bg-paper">
+        <section id="como" className="scroll-mt-24 border-y border-[#d4af37]/15 bg-[#fffdf8]">
           <div className="mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24">
             <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">
+                <p className="text-xs font-semibold uppercase tracking-[.2em] text-[#9b7728]">
                   {t.howEyebrow}
                 </p>
                 <h2 className="mt-3 text-4xl font-semibold tracking-tight">
@@ -639,9 +633,9 @@ function Index() {
                 {t.steps.map(([title, description], index) => (
                   <li
                     key={title}
-                    className="grid grid-cols-[52px_1fr] gap-4 rounded-2xl border border-ink/10 bg-ivory p-5"
+                    className="grid grid-cols-[52px_1fr] gap-4 rounded-2xl border border-[#d4af37]/20 bg-white p-5 shadow-[0_8px_20px_rgba(122,91,29,.04)]"
                   >
-                    <span className="grid size-11 place-items-center rounded-full bg-forest text-sm font-semibold text-paper">
+                    <span className="grid size-11 place-items-center rounded-full bg-[#b8892e] text-sm font-semibold text-white">
                       0{index + 1}
                     </span>
                     <div>
@@ -667,12 +661,12 @@ function Index() {
           <h2 className="mt-3 text-4xl font-semibold tracking-tight">
             {t.faqTitle}
           </h2>
-          <div className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
+          <div className="mt-8 divide-y divide-[#d4af37]/15 border-y border-[#d4af37]/15">
             {t.faq.map(([question, answer]) => (
               <details key={question} className="group py-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-semibold">
                   {question}
-                  <span className="text-xl text-clay group-open:rotate-45">+</span>
+                  <span className="text-xl text-[#b8892e] group-open:rotate-45">+</span>
                 </summary>
                 <p className="mt-3 max-w-3xl text-sm leading-6 text-warm-muted">
                   {answer}
@@ -682,16 +676,16 @@ function Index() {
           </div>
         </section>
 
-        <section className="bg-forest-deep text-paper">
+        <section className="border-y border-[#d4af37]/20 bg-[linear-gradient(135deg,#fffdf8,#f4e6bd)] text-[#211b12]">
           <div className="mx-auto max-w-[1280px] px-5 py-16 text-center sm:px-8">
-            <Sparkles className="mx-auto size-6 text-sand" />
+            <Sparkles className="mx-auto size-7 text-[#b8892e]" />
             <h2 className="mx-auto mt-4 max-w-2xl text-4xl font-semibold tracking-tight">
               {t.finalTitle}
             </h2>
             <Button
               asChild
               size="lg"
-              className="mt-7 rounded-full bg-paper px-7 text-forest hover:bg-sand"
+              className="mt-7 rounded-full bg-[#b8892e] px-7 text-white shadow-[0_10px_26px_rgba(184,137,46,.22)] hover:bg-[#9f7527]"
             >
               <Link to="/criar">
                 {t.finalCta} <ArrowRight />
@@ -701,11 +695,11 @@ function Index() {
         </section>
       </main>
 
-      <footer className="border-t border-white/10 bg-[#0b211c] text-paper">
+      <footer className="border-t border-[#d4af37]/20 bg-white text-[#211b12]">
         <div className="mx-auto flex max-w-[1280px] flex-col gap-6 px-5 py-10 sm:px-8 md:flex-row md:items-center md:justify-between">
           <Brand subtitle={t.brand} />
-          <div className="max-w-xl text-xs leading-5 text-paper/50">
-            <div className="mb-2 flex items-center gap-2 text-paper/70">
+          <div className="max-w-xl text-xs leading-5 text-[#7b705f]">
+            <div className="mb-2 flex items-center gap-2 font-medium text-[#9b7728]">
               <ShieldCheck className="size-4" /> {t.responsible}
             </div>
             {t.footer}
