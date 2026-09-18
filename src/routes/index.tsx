@@ -9,7 +9,6 @@ import {
   Globe2,
   Languages,
   MessageSquareText,
-  Search,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
@@ -397,7 +396,6 @@ const featureIcons = [
   BadgeCheck,
   Languages,
   MessageSquareText,
-  Search,
   BriefcaseBusiness,
 ];
 
@@ -605,7 +603,7 @@ function Index() {
           </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {t.deliver.map(([title, description], index) => {
+            {t.deliver.filter((_, index) => index !== 4).map(([title, description], index) => {
               const Icon = featureIcons[index]!;
               return (
                 <article
@@ -655,40 +653,6 @@ function Index() {
                   </li>
                 ))}
               </ol>
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <img
-              src="/jobpass-vacancy-adaptation.svg"
-              alt="JobPass vacancy adaptation"
-              className="w-full rounded-3xl shadow-[var(--shadow-paper)]"
-              loading="lazy"
-            />
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">
-                {t.vacancyEyebrow}
-              </p>
-              <h2 className="mt-3 text-4xl font-semibold tracking-tight">
-                {t.vacancyTitle}
-              </h2>
-              <p className="mt-5 leading-7 text-warm-muted">{t.vacancySub}</p>
-              <div className="mt-7 grid grid-cols-2 gap-3">
-                {t.vacancyCards.map((item, index) => (
-                  <div
-                    key={item}
-                    className="rounded-xl border border-ink/10 bg-paper p-4"
-                  >
-                    <span className="text-xs text-clay">0{index + 1}</span>
-                    <p className="mt-1 font-semibold">{item}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-5 text-sm leading-6 text-warm-muted">
-                {t.integrity}
-              </p>
             </div>
           </div>
         </section>
