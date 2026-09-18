@@ -45,11 +45,10 @@ const copy = {
     brand: "Emprego internacional",
     cta: "Criar meu JobPass",
     proof: "+8 mil imigrantes conseguiram emprego no exterior com nossas estratégias",
-    proofSub: "Experiência real da nossa agência, agora transformada em uma ferramenta digital.",
     eyebrow: "Para quem quer trabalhar em outro país",
-    hero: "Consiga oportunidades de emprego em qualquer país antes mesmo de viajar.",
+    hero: "Consiga sua vaga em qualquer país antes mesmo de viajar.",
     heroSub:
-      "A JobPass te fornece o kit perfeito para se candidatar da maneira correta às vagas do seu interesse, com estratégias usadas por imigrantes de todo o mundo — ajudando você a encontrar as oportunidades certas e se aproximar do sonho de viver fora do país.",
+      "Comece com o caminho certo para se candidatar às vagas do seu interesse. A JobPass te fornece o kit perfeito, com estratégias usadas por imigrantes de todo o mundo, para encontrar as oportunidades certas e se aproximar do seu sonho de viver fora do país.",
     heroCta: "Montar meu JobPass",
     minutes: "Leva poucos minutos para começar",
     trust: ["Sem inventar experiência", "Adaptado ao destino", "Pronto para usar"],
@@ -102,11 +101,10 @@ const copy = {
     brand: "Empleo internacional",
     cta: "Crear mi JobPass",
     proof: "+8 mil inmigrantes consiguieron empleo en el extranjero con nuestras estrategias",
-    proofSub: "Experiencia real de nuestra agencia, ahora convertida en una herramienta digital.",
     eyebrow: "Para quienes quieren trabajar en otro país",
-    hero: "Consigue oportunidades de empleo en cualquier país incluso antes de viajar.",
+    hero: "Consigue tu empleo en cualquier país incluso antes de viajar.",
     heroSub:
-      "JobPass te ofrece el kit ideal para postularte correctamente a las vacantes que te interesan, con estrategias utilizadas por inmigrantes de todo el mundo para encontrar las oportunidades adecuadas y acercarse al sueño de vivir en otro país.",
+      "Empieza por el camino correcto para postularte a las vacantes que te interesan. JobPass te ofrece el kit ideal, con estrategias utilizadas por inmigrantes de todo el mundo, para encontrar las oportunidades adecuadas y acercarte al sueño de vivir en otro país.",
     heroCta: "Crear mi JobPass",
     minutes: "Solo toma unos minutos empezar",
     trust: ["Sin inventar experiencia", "Adaptado al destino", "Listo para usar"],
@@ -159,11 +157,10 @@ const copy = {
     brand: "International employment",
     cta: "Create my JobPass",
     proof: "+8,000 immigrants landed jobs abroad using our strategies",
-    proofSub: "Real experience from our agency, now turned into a digital tool.",
     eyebrow: "For people who want to work in another country",
-    hero: "Find job opportunities in any country before you even travel.",
+    hero: "Land your job in any country before you even travel.",
     heroSub:
-      "JobPass gives you the right kit to apply properly for the roles you want, using strategies followed by immigrants around the world to identify the right opportunities and move closer to the goal of living abroad.",
+      "Start on the right path to apply for the roles you want. JobPass gives you the right kit, using strategies followed by immigrants around the world, to find the right opportunities and move closer to your goal of living abroad.",
     heroCta: "Build my JobPass",
     minutes: "It only takes a few minutes to start",
     trust: ["No made-up experience", "Adapted to your destination", "Ready to use"],
@@ -216,11 +213,10 @@ const copy = {
     brand: "Emploi international",
     cta: "Créer mon JobPass",
     proof: "+8 000 immigrés ont trouvé un emploi à l'étranger grâce à nos stratégies",
-    proofSub: "L'expérience réelle de notre agence, désormais transformée en outil numérique.",
     eyebrow: "Pour ceux qui veulent travailler dans un autre pays",
-    hero: "Trouvez des opportunités d'emploi dans n'importe quel pays avant même de voyager.",
+    hero: "Décrochez votre emploi dans n'importe quel pays avant même de voyager.",
     heroSub:
-      "JobPass vous fournit le kit idéal pour postuler correctement aux offres qui vous intéressent, avec des stratégies utilisées par des immigrés du monde entier pour repérer les bonnes opportunités et vous rapprocher de votre projet de vivre à l'étranger.",
+      "Commencez par la bonne voie pour postuler aux offres qui vous intéressent. JobPass vous fournit le kit idéal, avec des stratégies utilisées par des immigrés du monde entier, pour trouver les bonnes opportunités et vous rapprocher de votre projet de vivre à l'étranger.",
     heroCta: "Créer mon JobPass",
     minutes: "Quelques minutes suffisent pour commencer",
     trust: ["Aucune expérience inventée", "Adapté à la destination", "Prêt à utiliser"],
@@ -273,11 +269,10 @@ const copy = {
     brand: "Internationaler Jobstart",
     cta: "Mein JobPass erstellen",
     proof: "+8.000 Einwanderer fanden mit unseren Strategien einen Job im Ausland",
-    proofSub: "Echte Erfahrung unserer Agentur, jetzt als digitales Tool verfügbar.",
     eyebrow: "Für alle, die in einem anderen Land arbeiten möchten",
-    hero: "Finde Jobchancen in jedem Land, noch bevor du überhaupt reist.",
+    hero: "Sichere dir deinen Job in jedem Land, noch bevor du reist.",
     heroSub:
-      "JobPass gibt dir das passende Paket, um dich richtig auf interessante Stellen zu bewerben – mit Strategien, die von Einwanderern auf der ganzen Welt genutzt werden, um die richtigen Chancen zu finden und dem Traum vom Leben im Ausland näherzukommen.",
+      "Starte mit dem richtigen Weg, um dich auf die Stellen zu bewerben, die dich interessieren. JobPass gibt dir das passende Paket mit Strategien von Einwanderern aus aller Welt, damit du die richtigen Chancen findest und deinem Ziel, im Ausland zu leben, näherkommst.",
     heroCta: "Mein JobPass erstellen",
     minutes: "Der Start dauert nur wenige Minuten",
     trust: ["Keine erfundene Erfahrung", "Auf das Zielland abgestimmt", "Sofort nutzbar"],
@@ -330,11 +325,10 @@ const copy = {
     brand: "Lavoro internazionale",
     cta: "Crea il mio JobPass",
     proof: "+8.000 immigrati hanno trovato lavoro all'estero con le nostre strategie",
-    proofSub: "Esperienza reale della nostra agenzia, ora trasformata in uno strumento digitale.",
     eyebrow: "Per chi vuole lavorare in un altro paese",
-    hero: "Trova opportunità di lavoro in qualsiasi paese ancora prima di partire.",
+    hero: "Ottieni il tuo lavoro in qualsiasi paese ancora prima di partire.",
     heroSub:
-      "JobPass ti fornisce il kit ideale per candidarti nel modo corretto alle posizioni che ti interessano, con strategie usate da immigrati di tutto il mondo per individuare le opportunità giuste e avvicinarti al sogno di vivere all'estero.",
+      "Inizia dal percorso giusto per candidarti alle posizioni che ti interessano. JobPass ti fornisce il kit ideale, con strategie usate da immigrati di tutto il mondo, per trovare le opportunità giuste e avvicinarti al sogno di vivere all'estero.",
     heroCta: "Crea il mio JobPass",
     minutes: "Bastano pochi minuti per iniziare",
     trust: ["Nessuna esperienza inventata", "Adattato alla destinazione", "Pronto da usare"],
@@ -520,7 +514,6 @@ function Index() {
                   ★★★★★
                 </span>
               </div>
-              <p className="mt-1 text-xs text-paper/65">{t.proofSub}</p>
             </div>
           </div>
 
