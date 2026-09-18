@@ -1,157 +1,754 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BadgeCheck, BriefcaseBusiness, Check, FileText, Globe2, Languages, MessageSquareText, Search, ShieldCheck, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  ArrowRight,
+  BadgeCheck,
+  BriefcaseBusiness,
+  Check,
+  FileText,
+  Globe2,
+  Languages,
+  MessageSquareText,
+  Search,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
-  head: () => ({ meta: [
-    { title: "JobPass — Chegue preparado para trabalhar fora" },
-    { name: "description", content: "Monte seu kit profissional para buscar emprego no exterior: currículo adaptado, ATS, mensagens, entrevistas e plano de candidatura." },
-    { property: "og:title", content: "JobPass — Seu kit de emprego internacional" },
-    { property: "og:description", content: "Tudo que você precisa para começar a procurar emprego no novo país, em um só lugar." },
-  ]}),
+  head: () => ({
+    meta: [
+      { title: "JobPass — International job preparation" },
+      {
+        name: "description",
+        content:
+          "Prepare your CV, messages, interview and job-search plan for the country where you want to work.",
+      },
+      {
+        property: "og:title",
+        content: "JobPass — Your international job kit",
+      },
+      {
+        property: "og:description",
+        content:
+          "Everything you need to start applying in your new country, in one place.",
+      },
+    ],
+  }),
   component: Index,
 });
 
-const deliverables = [
-  [FileText, "Currículo adaptado", "Um CV profissional ajustado ao padrão do país de destino."],
-  [BadgeCheck, "Versão ATS", "Estrutura limpa para sistemas de recrutamento, sem inventar informações."],
-  [Languages, "Idioma local", "Seu material preparado para o idioma usado nas candidaturas."],
-  [MessageSquareText, "Mensagens prontas", "WhatsApp, e-mail, LinkedIn, telefone e apresentação presencial."],
-  [Search, "Adaptação por vaga", "Cole uma vaga e direcione seu material aos requisitos que você realmente possui."],
-  [BriefcaseBusiness, "Plano de 7 dias", "Portais, termos de busca e uma rotina prática para começar a aplicar."],
+type Lang = "pt" | "es" | "en" | "fr" | "de" | "it";
+
+const copy = {
+  pt: {
+    nav: ["O que você recebe", "Como funciona", "Dúvidas"],
+    brand: "Emprego internacional",
+    cta: "Criar meu JobPass",
+    proof: "+8 mil imigrantes conseguiram emprego no exterior com nossas estratégias",
+    proofSub: "Experiência real da nossa agência, agora transformada em uma ferramenta digital.",
+    eyebrow: "Para quem quer trabalhar em outro país",
+    hero: "Chegue com o currículo pronto. E sabendo o que fazer depois.",
+    heroSub:
+      "O JobPass transforma sua experiência em um kit de candidatura adaptado ao seu destino: currículo, ATS, idioma local, mensagens, entrevista e plano para começar a buscar vagas.",
+    heroCta: "Montar meu JobPass",
+    minutes: "Leva poucos minutos para começar",
+    trust: ["Sem inventar experiência", "Adaptado ao destino", "Pronto para usar"],
+    reviewsTitle: "Quem já usou nossas estratégias",
+    deliverEyebrow: "Seu pacote profissional",
+    deliverTitle: "Não é só um currículo.",
+    deliverSub:
+      "Você recebe as peças que normalmente teria que criar, traduzir e adaptar separadamente.",
+    deliver: [
+      ["Currículo adaptado", "Um CV profissional ajustado ao padrão do país de destino."],
+      ["Versão ATS", "Estrutura limpa para sistemas de recrutamento, sem inventar informações."],
+      ["Idioma local", "Seu material preparado para o idioma usado nas candidaturas."],
+      ["Mensagens prontas", "WhatsApp, e-mail, LinkedIn, telefone e apresentação presencial."],
+      ["Adaptação por vaga", "Cole uma vaga e direcione seu material aos requisitos que você realmente possui."],
+      ["Plano de 7 dias", "Portais, termos de busca e uma rotina prática para começar a aplicar."],
+    ],
+    howEyebrow: "Como funciona",
+    howTitle: "Do zero ao material pronto em três etapas.",
+    howSub:
+      "Você informa os fatos. O JobPass organiza sua candidatura ao redor do mercado que escolheu.",
+    steps: [
+      ["Escolha seu destino", "Informe de onde você vem, para onde vai e em qual área quer trabalhar."],
+      ["Conte sua experiência", "Cole seu currículo, envie o arquivo ou comece do zero. Você não precisa escrever bonito."],
+      ["Receba seu JobPass", "Abra seu painel com CV, mensagens, entrevista, busca de vagas e plano de candidatura."],
+    ],
+    vacancyEyebrow: "Aplicar para uma vaga",
+    vacancyTitle: "Pare de mandar o mesmo CV para todo mundo.",
+    vacancySub:
+      "Cole a descrição da vaga. O JobPass identifica o que pode ser destacado usando somente experiências e competências que você realmente informou.",
+    vacancyCards: ["Resumo", "Experiência", "Carta", "Mensagem"],
+    integrity:
+      "A lógica é sempre a mesma: adaptar o foco sem criar empresas, resultados, qualificações ou habilidades que não existem no seu histórico.",
+    faqEyebrow: "Antes de começar",
+    faqTitle: "Perguntas frequentes",
+    faq: [
+      ["O JobPass consegue emprego para mim?", "Não. O JobPass prepara seu material e sua estratégia de candidatura. A contratação depende das empresas e do seu processo seletivo."],
+      ["A ferramenta inventa experiência para melhorar meu currículo?", "Não. O JobPass organiza e profissionaliza somente as informações que você fornecer."],
+      ["Funciona para quem ainda está no Brasil?", "Sim. Você pode preparar seu material antes da mudança e começar a mapear vagas e termos usados no destino."],
+      ["Quais países estarão disponíveis?", "A estrutura é internacional. A primeira versão será aprofundada para Espanha e Portugal e, depois, expandida para outros destinos."],
+    ],
+    finalTitle:
+      "Sua mudança já tem coisas demais para resolver. A candidatura não precisa começar do zero.",
+    finalCta: "Montar meu JobPass",
+    responsible: "Informação responsável",
+    footer:
+      "JobPass é uma ferramenta de preparação profissional. Informações migratórias, legais e de direito ao trabalho devem ser confirmadas em fontes oficiais atualizadas.",
+  },
+  es: {
+    nav: ["Qué recibes", "Cómo funciona", "Preguntas"],
+    brand: "Empleo internacional",
+    cta: "Crear mi JobPass",
+    proof: "+8 mil inmigrantes consiguieron empleo en el extranjero con nuestras estrategias",
+    proofSub: "Experiencia real de nuestra agencia, ahora convertida en una herramienta digital.",
+    eyebrow: "Para quienes quieren trabajar en otro país",
+    hero: "Llega con tu currículum listo. Y sabiendo qué hacer después.",
+    heroSub:
+      "JobPass convierte tu experiencia en un kit de candidatura adaptado a tu destino: currículum, ATS, idioma local, mensajes, entrevista y plan para empezar a buscar empleo.",
+    heroCta: "Crear mi JobPass",
+    minutes: "Solo toma unos minutos empezar",
+    trust: ["Sin inventar experiencia", "Adaptado al destino", "Listo para usar"],
+    reviewsTitle: "Personas que ya usaron nuestras estrategias",
+    deliverEyebrow: "Tu paquete profesional",
+    deliverTitle: "No es solo un currículum.",
+    deliverSub:
+      "Recibes las piezas que normalmente tendrías que crear, traducir y adaptar por separado.",
+    deliver: [
+      ["Currículum adaptado", "Un CV profesional ajustado al estándar del país de destino."],
+      ["Versión ATS", "Estructura limpia para sistemas de selección, sin inventar información."],
+      ["Idioma local", "Tu material preparado para el idioma usado en las candidaturas."],
+      ["Mensajes listos", "WhatsApp, email, LinkedIn, teléfono y presentación presencial."],
+      ["Adaptación por vacante", "Pega una oferta y orienta tu material a requisitos que realmente tienes."],
+      ["Plan de 7 días", "Portales, búsquedas y una rutina práctica para empezar a postular."],
+    ],
+    howEyebrow: "Cómo funciona",
+    howTitle: "De cero al material listo en tres pasos.",
+    howSub:
+      "Tú aportas los datos. JobPass organiza tu candidatura alrededor del mercado elegido.",
+    steps: [
+      ["Elige tu destino", "Indica de dónde vienes, adónde vas y en qué área quieres trabajar."],
+      ["Cuéntanos tu experiencia", "Pega tu CV, sube el archivo o empieza desde cero. No necesitas escribir perfecto."],
+      ["Recibe tu JobPass", "Abre tu panel con CV, mensajes, entrevista, búsqueda de empleo y plan de candidatura."],
+    ],
+    vacancyEyebrow: "Postular a una vacante",
+    vacancyTitle: "Deja de enviar el mismo CV a todo el mundo.",
+    vacancySub:
+      "Pega la descripción de la vacante. JobPass identifica qué destacar usando solo experiencias y competencias que realmente indicaste.",
+    vacancyCards: ["Resumen", "Experiencia", "Carta", "Mensaje"],
+    integrity:
+      "La regla es simple: adaptar el enfoque sin crear empresas, resultados, cualificaciones o habilidades que no existen en tu historial.",
+    faqEyebrow: "Antes de empezar",
+    faqTitle: "Preguntas frecuentes",
+    faq: [
+      ["¿JobPass me consigue empleo?", "No. JobPass prepara tu material y estrategia de candidatura. La contratación depende de las empresas y del proceso de selección."],
+      ["¿La herramienta inventa experiencia para mejorar mi CV?", "No. JobPass organiza y profesionaliza únicamente la información que proporciones."],
+      ["¿Funciona si todavía estoy en mi país?", "Sí. Puedes preparar tu material antes de mudarte y empezar a mapear vacantes y términos de búsqueda."],
+      ["¿Qué países estarán disponibles?", "La estructura es internacional. La primera versión profundiza España y Portugal y luego se expandirá a otros destinos."],
+    ],
+    finalTitle:
+      "Tu mudanza ya tiene demasiadas cosas que resolver. Tu candidatura no tiene que empezar de cero.",
+    finalCta: "Crear mi JobPass",
+    responsible: "Información responsable",
+    footer:
+      "JobPass es una herramienta de preparación profesional. La información migratoria, legal y sobre derecho al trabajo debe confirmarse en fuentes oficiales actualizadas.",
+  },
+  en: {
+    nav: ["What you get", "How it works", "Questions"],
+    brand: "International employment",
+    cta: "Create my JobPass",
+    proof: "+8,000 immigrants landed jobs abroad using our strategies",
+    proofSub: "Real experience from our agency, now turned into a digital tool.",
+    eyebrow: "For people who want to work in another country",
+    hero: "Arrive with your CV ready. And know what to do next.",
+    heroSub:
+      "JobPass turns your experience into a destination-ready application kit: CV, ATS version, local language, messages, interview prep and a job-search plan.",
+    heroCta: "Build my JobPass",
+    minutes: "It only takes a few minutes to start",
+    trust: ["No made-up experience", "Adapted to your destination", "Ready to use"],
+    reviewsTitle: "People who already used our strategies",
+    deliverEyebrow: "Your professional kit",
+    deliverTitle: "It is more than a CV.",
+    deliverSub:
+      "You get the pieces you would normally have to create, translate and adapt separately.",
+    deliver: [
+      ["Adapted CV", "A professional CV adjusted to the standards of your destination country."],
+      ["ATS version", "A clean structure for recruitment systems, without invented information."],
+      ["Local language", "Your material prepared for the language used in applications."],
+      ["Ready-to-send messages", "WhatsApp, email, LinkedIn, phone and in-person introduction."],
+      ["Vacancy adaptation", "Paste a job and focus your material on requirements you actually have."],
+      ["7-day plan", "Job boards, search terms and a practical routine to start applying."],
+    ],
+    howEyebrow: "How it works",
+    howTitle: "From zero to ready-to-use material in three steps.",
+    howSub:
+      "You provide the facts. JobPass organizes your application around the market you chose.",
+    steps: [
+      ["Choose your destination", "Tell us where you are from, where you are going and the field you want to work in."],
+      ["Share your experience", "Paste your CV, upload it or start from scratch. You do not need perfect wording."],
+      ["Receive your JobPass", "Open your dashboard with CV, messages, interview prep, job search and application plan."],
+    ],
+    vacancyEyebrow: "Apply to a vacancy",
+    vacancyTitle: "Stop sending the same CV to everyone.",
+    vacancySub:
+      "Paste the job description. JobPass identifies what can be highlighted using only experience and skills you actually provided.",
+    vacancyCards: ["Summary", "Experience", "Cover letter", "Message"],
+    integrity:
+      "The rule is simple: change the focus without inventing companies, results, qualifications or skills that are not in your history.",
+    faqEyebrow: "Before you start",
+    faqTitle: "Frequently asked questions",
+    faq: [
+      ["Does JobPass get me a job?", "No. JobPass prepares your materials and application strategy. Hiring decisions depend on employers and their selection process."],
+      ["Does it invent experience to improve my CV?", "No. JobPass only organizes and professionalizes the information you provide."],
+      ["Can I use it before I move?", "Yes. You can prepare your materials before relocating and start mapping jobs and search terms in advance."],
+      ["Which countries are available?", "The architecture is international. Spain and Portugal are the first deeply supported markets, followed by more destinations."],
+    ],
+    finalTitle:
+      "Moving countries already gives you enough to solve. Your job application should not start from zero.",
+    finalCta: "Build my JobPass",
+    responsible: "Responsible information",
+    footer:
+      "JobPass is a professional preparation tool. Immigration, legal and right-to-work information should always be confirmed with current official sources.",
+  },
+  fr: {
+    nav: ["Ce que vous recevez", "Comment ça marche", "Questions"],
+    brand: "Emploi international",
+    cta: "Créer mon JobPass",
+    proof: "+8 000 immigrés ont trouvé un emploi à l'étranger grâce à nos stratégies",
+    proofSub: "L'expérience réelle de notre agence, désormais transformée en outil numérique.",
+    eyebrow: "Pour ceux qui veulent travailler dans un autre pays",
+    hero: "Arrivez avec votre CV prêt. Et sachez quoi faire ensuite.",
+    heroSub:
+      "JobPass transforme votre expérience en kit de candidature adapté à votre destination : CV, ATS, langue locale, messages, entretien et plan de recherche d'emploi.",
+    heroCta: "Créer mon JobPass",
+    minutes: "Quelques minutes suffisent pour commencer",
+    trust: ["Aucune expérience inventée", "Adapté à la destination", "Prêt à utiliser"],
+    reviewsTitle: "Ils ont déjà utilisé nos stratégies",
+    deliverEyebrow: "Votre kit professionnel",
+    deliverTitle: "Ce n'est pas seulement un CV.",
+    deliverSub:
+      "Vous recevez les éléments que vous devriez normalement créer, traduire et adapter séparément.",
+    deliver: [
+      ["CV adapté", "Un CV professionnel adapté aux standards du pays de destination."],
+      ["Version ATS", "Une structure claire pour les systèmes de recrutement, sans informations inventées."],
+      ["Langue locale", "Vos documents préparés dans la langue utilisée pour les candidatures."],
+      ["Messages prêts", "WhatsApp, e-mail, LinkedIn, téléphone et présentation en personne."],
+      ["Adaptation à l'offre", "Collez une offre et adaptez votre dossier aux exigences que vous possédez réellement."],
+      ["Plan de 7 jours", "Sites d'emploi, mots-clés et routine pratique pour commencer à postuler."],
+    ],
+    howEyebrow: "Comment ça marche",
+    howTitle: "De zéro à un dossier prêt en trois étapes.",
+    howSub:
+      "Vous fournissez les faits. JobPass organise votre candidature autour du marché choisi.",
+    steps: [
+      ["Choisissez votre destination", "Indiquez votre pays d'origine, votre destination et le secteur visé."],
+      ["Partagez votre expérience", "Collez votre CV, importez-le ou commencez de zéro. Pas besoin de rédiger parfaitement."],
+      ["Recevez votre JobPass", "Accédez à votre CV, vos messages, votre préparation d'entretien et votre plan de candidature."],
+    ],
+    vacancyEyebrow: "Postuler à une offre",
+    vacancyTitle: "Arrêtez d'envoyer le même CV à tout le monde.",
+    vacancySub:
+      "Collez l'offre. JobPass identifie ce qui peut être mis en avant uniquement à partir de votre expérience réelle.",
+    vacancyCards: ["Profil", "Expérience", "Lettre", "Message"],
+    integrity:
+      "La règle reste simple : adapter l'accent sans inventer entreprises, résultats, qualifications ou compétences.",
+    faqEyebrow: "Avant de commencer",
+    faqTitle: "Questions fréquentes",
+    faq: [
+      ["JobPass me trouve-t-il un emploi ?", "Non. JobPass prépare vos documents et votre stratégie. Le recrutement dépend des employeurs et de leur processus."],
+      ["L'outil invente-t-il de l'expérience ?", "Non. JobPass organise uniquement les informations que vous fournissez."],
+      ["Puis-je l'utiliser avant mon départ ?", "Oui. Vous pouvez préparer votre dossier et commencer à repérer les offres avant de déménager."],
+      ["Quels pays sont disponibles ?", "L'architecture est internationale. L'Espagne et le Portugal sont les premiers marchés approfondis avant l'expansion."],
+    ],
+    finalTitle:
+      "Un déménagement international demande déjà beaucoup. Votre candidature ne doit pas partir de zéro.",
+    finalCta: "Créer mon JobPass",
+    responsible: "Information responsable",
+    footer:
+      "JobPass est un outil de préparation professionnelle. Les informations migratoires, légales et liées au droit au travail doivent être vérifiées auprès de sources officielles à jour.",
+  },
+  de: {
+    nav: ["Was du bekommst", "So funktioniert es", "Fragen"],
+    brand: "Internationaler Jobstart",
+    cta: "Mein JobPass erstellen",
+    proof: "+8.000 Einwanderer fanden mit unseren Strategien einen Job im Ausland",
+    proofSub: "Echte Erfahrung unserer Agentur, jetzt als digitales Tool verfügbar.",
+    eyebrow: "Für alle, die in einem anderen Land arbeiten möchten",
+    hero: "Komm mit fertigem Lebenslauf an. Und wisse, was als Nächstes zu tun ist.",
+    heroSub:
+      "JobPass macht aus deiner Erfahrung ein auf dein Zielland abgestimmtes Bewerbungspaket: Lebenslauf, ATS-Version, Landessprache, Nachrichten, Interviewvorbereitung und Jobsuchplan.",
+    heroCta: "Mein JobPass erstellen",
+    minutes: "Der Start dauert nur wenige Minuten",
+    trust: ["Keine erfundene Erfahrung", "Auf das Zielland abgestimmt", "Sofort nutzbar"],
+    reviewsTitle: "Menschen, die unsere Strategien bereits genutzt haben",
+    deliverEyebrow: "Dein professionelles Paket",
+    deliverTitle: "Mehr als nur ein Lebenslauf.",
+    deliverSub:
+      "Du erhältst alles, was du sonst einzeln erstellen, übersetzen und anpassen müsstest.",
+    deliver: [
+      ["Angepasster Lebenslauf", "Professioneller Lebenslauf nach den Standards des Ziellandes."],
+      ["ATS-Version", "Klare Struktur für Recruiting-Systeme ohne erfundene Angaben."],
+      ["Landessprache", "Deine Unterlagen in der Sprache, die für Bewerbungen verwendet wird."],
+      ["Fertige Nachrichten", "WhatsApp, E-Mail, LinkedIn, Telefon und persönliche Vorstellung."],
+      ["Anpassung an Stellen", "Füge eine Stelle ein und richte deine Unterlagen auf echte Anforderungen aus."],
+      ["7-Tage-Plan", "Jobportale, Suchbegriffe und praktische Bewerbungsroutine."],
+    ],
+    howEyebrow: "So funktioniert es",
+    howTitle: "In drei Schritten von null zu fertigen Unterlagen.",
+    howSub:
+      "Du lieferst die Fakten. JobPass organisiert deine Bewerbung passend zum gewählten Markt.",
+    steps: [
+      ["Zielland wählen", "Sag uns, woher du kommst, wohin du gehst und in welchem Bereich du arbeiten möchtest."],
+      ["Erfahrung teilen", "Füge deinen Lebenslauf ein, lade ihn hoch oder beginne von vorn."],
+      ["JobPass erhalten", "Öffne dein Dashboard mit Lebenslauf, Nachrichten, Interviewtraining und Bewerbungsplan."],
+    ],
+    vacancyEyebrow: "Auf eine Stelle bewerben",
+    vacancyTitle: "Schick nicht mehr denselben Lebenslauf an alle.",
+    vacancySub:
+      "Füge die Stellenbeschreibung ein. JobPass hebt nur Erfahrungen und Fähigkeiten hervor, die du tatsächlich angegeben hast.",
+    vacancyCards: ["Profil", "Erfahrung", "Anschreiben", "Nachricht"],
+    integrity:
+      "Die Regel ist einfach: Fokus anpassen, ohne Firmen, Ergebnisse, Qualifikationen oder Fähigkeiten zu erfinden.",
+    faqEyebrow: "Vor dem Start",
+    faqTitle: "Häufige Fragen",
+    faq: [
+      ["Verschafft mir JobPass einen Job?", "Nein. JobPass bereitet Unterlagen und Bewerbungsstrategie vor. Die Einstellung hängt vom Arbeitgeber ab."],
+      ["Erfindet das Tool Erfahrungen?", "Nein. JobPass organisiert nur die Informationen, die du selbst angibst."],
+      ["Kann ich JobPass vor dem Umzug nutzen?", "Ja. Du kannst alles vorbereiten und schon vor dem Umzug nach Stellen suchen."],
+      ["Welche Länder werden unterstützt?", "Die Architektur ist international. Spanien und Portugal sind die ersten vertieft unterstützten Märkte."],
+    ],
+    finalTitle:
+      "Ein Umzug ins Ausland bringt genug Aufgaben mit sich. Deine Bewerbung muss nicht bei null anfangen.",
+    finalCta: "Mein JobPass erstellen",
+    responsible: "Verantwortungsvolle Informationen",
+    footer:
+      "JobPass ist ein Tool zur beruflichen Vorbereitung. Migrations-, Rechts- und Arbeitserlaubnisinformationen sollten immer mit aktuellen offiziellen Quellen geprüft werden.",
+  },
+  it: {
+    nav: ["Cosa ricevi", "Come funziona", "Domande"],
+    brand: "Lavoro internazionale",
+    cta: "Crea il mio JobPass",
+    proof: "+8.000 immigrati hanno trovato lavoro all'estero con le nostre strategie",
+    proofSub: "Esperienza reale della nostra agenzia, ora trasformata in uno strumento digitale.",
+    eyebrow: "Per chi vuole lavorare in un altro paese",
+    hero: "Arriva con il CV pronto. E sapendo cosa fare dopo.",
+    heroSub:
+      "JobPass trasforma la tua esperienza in un kit di candidatura adatto alla destinazione: CV, ATS, lingua locale, messaggi, colloquio e piano di ricerca lavoro.",
+    heroCta: "Crea il mio JobPass",
+    minutes: "Bastano pochi minuti per iniziare",
+    trust: ["Nessuna esperienza inventata", "Adattato alla destinazione", "Pronto da usare"],
+    reviewsTitle: "Chi ha già usato le nostre strategie",
+    deliverEyebrow: "Il tuo kit professionale",
+    deliverTitle: "Non è solo un CV.",
+    deliverSub:
+      "Ricevi tutto ciò che normalmente dovresti creare, tradurre e adattare separatamente.",
+    deliver: [
+      ["CV adattato", "Un CV professionale adeguato agli standard del paese di destinazione."],
+      ["Versione ATS", "Struttura pulita per i sistemi di recruiting, senza informazioni inventate."],
+      ["Lingua locale", "Materiale preparato nella lingua usata per le candidature."],
+      ["Messaggi pronti", "WhatsApp, e-mail, LinkedIn, telefono e presentazione di persona."],
+      ["Adattamento alla posizione", "Incolla un'offerta e focalizza il materiale sui requisiti che possiedi davvero."],
+      ["Piano di 7 giorni", "Portali, termini di ricerca e routine pratica per iniziare a candidarti."],
+    ],
+    howEyebrow: "Come funziona",
+    howTitle: "Da zero al materiale pronto in tre passaggi.",
+    howSub:
+      "Tu fornisci i fatti. JobPass organizza la candidatura intorno al mercato scelto.",
+    steps: [
+      ["Scegli la destinazione", "Indica da dove vieni, dove vai e in quale settore vuoi lavorare."],
+      ["Racconta la tua esperienza", "Incolla il CV, caricalo o parti da zero. Non serve scrivere in modo perfetto."],
+      ["Ricevi il tuo JobPass", "Apri la dashboard con CV, messaggi, colloquio, ricerca lavoro e piano di candidatura."],
+    ],
+    vacancyEyebrow: "Candidati a un'offerta",
+    vacancyTitle: "Smetti di inviare lo stesso CV a tutti.",
+    vacancySub:
+      "Incolla la descrizione dell'offerta. JobPass evidenzia solo esperienze e competenze che hai realmente indicato.",
+    vacancyCards: ["Profilo", "Esperienza", "Lettera", "Messaggio"],
+    integrity:
+      "La regola è semplice: adattare il focus senza inventare aziende, risultati, qualifiche o competenze.",
+    faqEyebrow: "Prima di iniziare",
+    faqTitle: "Domande frequenti",
+    faq: [
+      ["JobPass mi trova un lavoro?", "No. JobPass prepara materiali e strategia. L'assunzione dipende dalle aziende e dal processo di selezione."],
+      ["Lo strumento inventa esperienza?", "No. JobPass organizza solo le informazioni che fornisci."],
+      ["Posso usarlo prima di trasferirmi?", "Sì. Puoi preparare tutto prima del viaggio e iniziare a mappare le opportunità."],
+      ["Quali paesi saranno disponibili?", "L'architettura è internazionale. Spagna e Portogallo sono i primi mercati supportati in profondità."],
+    ],
+    finalTitle:
+      "Trasferirsi all'estero comporta già abbastanza cose da risolvere. La candidatura non deve partire da zero.",
+    finalCta: "Crea il mio JobPass",
+    responsible: "Informazioni responsabili",
+    footer:
+      "JobPass è uno strumento di preparazione professionale. Le informazioni migratorie, legali e sul diritto al lavoro devono essere verificate su fonti ufficiali aggiornate.",
+  },
+} as const;
+
+const testimonials = [
+  ["Renata", "Super recomendo!! Consegui meu emprego até antes da viagem!"],
+  ["Jorge", "Ótimas indicações de vaga pra minha área"],
+  ["Yusuf", "Fui selecionado pra 3 entrevistas"],
+  ["Juan", "Viajo semana que vem e já consegui meu emprego graças as estratégias"],
+] as const;
+
+const featureIcons = [
+  FileText,
+  BadgeCheck,
+  Languages,
+  MessageSquareText,
+  Search,
+  BriefcaseBusiness,
 ];
 
-const steps = [
-  ["01", "Escolha seu destino", "Informe de onde você vem, para onde vai e em qual área quer trabalhar."],
-  ["02", "Conte sua experiência", "Cole seu currículo, envie o arquivo ou comece do zero. Você não precisa escrever bonito."],
-  ["03", "Receba seu JobPass", "Abra seu painel com CV, mensagens, entrevista, busca de vagas e plano de candidatura."],
-];
-
-const faq = [
-  ["O JobPass consegue emprego para mim?", "Não. O JobPass prepara seu material e sua estratégia de candidatura. A contratação depende das empresas e do seu processo seletivo."],
-  ["A ferramenta inventa experiência para melhorar meu currículo?", "Não. O JobPass organiza e profissionaliza somente as informações que você fornecer."],
-  ["Funciona para quem ainda está no Brasil?", "Sim. Você pode preparar seu material antes da mudança e começar a mapear vagas e termos usados no destino."],
-  ["Quais países estarão disponíveis?", "A estrutura é internacional. A primeira versão comercial será aprofundada para brasileiros buscando oportunidades na Espanha e em Portugal, antes da expansão para outros destinos."],
-];
-
-function Brand(){return <Link to="/" className="flex items-center gap-3"><span className="grid size-10 place-items-center rounded-xl bg-forest font-bold text-paper">J</span><div className="leading-none"><b className="text-lg tracking-tight">JobPass</b><p className="mt-1 text-[9px] font-semibold uppercase tracking-[.2em] text-warm-muted">Emprego internacional</p></div></Link>}
-
-function ProductMockup(){
- return <div className="relative mx-auto max-w-[590px]">
-  <div className="absolute -inset-8 rounded-[2.5rem] bg-white/10 blur-2xl"/>
-  <img
-   src="/jobpass-dashboard.svg"
-   alt="Painel do JobPass com currículo, mensagens, entrevista e acompanhamento de candidaturas"
-   className="relative w-full rounded-[2rem] shadow-2xl"
-   loading="eager"
-  />
- </div>
+function detectLanguage(): Lang {
+  if (typeof navigator === "undefined") return "en";
+  const saved = window.localStorage.getItem("jobpass-language") as Lang | null;
+  if (saved && saved in copy) return saved;
+  const code = navigator.language.toLowerCase().split("-")[0];
+  return (["pt", "es", "en", "fr", "de", "it"].includes(code) ? code : "en") as Lang;
 }
 
-function Index(){
- return <div className="min-h-dvh bg-ivory text-ink">
-  <header className="sticky top-0 z-30 border-b border-ink/10 bg-ivory/90 backdrop-blur">
-   <div className="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-4 sm:px-8">
-    <Brand/>
-    <nav className="hidden items-center gap-7 text-sm text-warm-muted md:flex"><a href="#recebe" className="hover:text-ink">O que você recebe</a><a href="#como" className="hover:text-ink">Como funciona</a><a href="#preco" className="hover:text-ink">Preço</a><a href="#faq" className="hover:text-ink">Dúvidas</a></nav>
-    <div className="flex flex-col items-center gap-2">
-     <Button asChild className="rounded-full px-5"><Link to="/criar">Criar meu JobPass</Link></Button>
-     <div className="flex max-w-[260px] items-center justify-center gap-2 rounded-full border border-clay/25 bg-sand/80 px-3 py-1.5 text-center shadow-sm">
-      <span className="shrink-0 text-[11px] tracking-[.08em] text-[#b8752f]" aria-label="5 estrelas">★★★★★</span>
-      <span className="text-[10px] font-medium leading-tight text-ink/75"><strong className="font-bold text-forest">+8 mil imigrantes</strong> já conseguiram emprego com nossas estratégias</span>
-     </div>
-    </div>
-   </div>
-  </header>
-
-  <main>
-   <section className="relative overflow-hidden bg-[linear-gradient(125deg,#102e28_0%,#1c5145_55%,#70483b_100%)] text-paper">
-    <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(255,255,255,.11),transparent_25%),radial-gradient(circle_at_90%_80%,rgba(220,173,128,.2),transparent_28%)]"/>
-    <div className="relative mx-auto grid max-w-[1280px] items-center gap-14 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.05fr_.95fr] lg:py-28">
-     <div>
-      <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs text-paper/80"><Globe2 className="size-3.5"/> Para quem quer trabalhar em outro país</div>
-      <h1 className="mt-6 max-w-[13ch] text-[2.8rem] font-semibold leading-[1.02] tracking-[-.05em] sm:text-6xl lg:text-[4.3rem]">Chegue com o currículo pronto. E sabendo o que fazer depois.</h1>
-      <p className="mt-6 max-w-[57ch] text-base leading-7 text-paper/75 sm:text-lg">O JobPass transforma sua experiência em um kit de candidatura adaptado ao seu destino: currículo, ATS, idioma local, mensagens, entrevista e plano para começar a buscar vagas.</p>
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"><Button asChild size="lg" className="h-13 rounded-full bg-paper px-7 text-forest hover:bg-sand"><Link to="/criar">Montar meu JobPass <ArrowRight/></Link></Button><span className="text-sm text-paper/60">Leva poucos minutos para começar</span></div>
-      <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-paper/65"><span>✓ Sem inventar experiência</span><span>✓ Adaptado ao destino</span><span>✓ Pronto para usar</span></div>
-     </div>
-     <ProductMockup/>
-    </div>
-   </section>
-
-   <section className="border-b border-ink/10 bg-paper"><div className="mx-auto grid max-w-[1280px] grid-cols-2 gap-px px-5 py-7 text-center sm:px-8 md:grid-cols-4">{[["1 kit","para toda a candidatura"],["3 etapas","para começar"],["7 dias","de plano de ação"],["2 mercados","Espanha + Portugal primeiro"]].map(([n,d])=><div key={n} className="px-3 py-3"><b className="text-xl">{n}</b><p className="mt-1 text-xs text-warm-muted">{d}</p></div>)}</div></section>
-
-   <section id="recebe" className="scroll-mt-24 mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24">
-    <div className="max-w-2xl"><p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Seu pacote profissional</p><h2 className="mt-3 text-4xl font-semibold tracking-[-.035em] sm:text-5xl">Não é só um currículo.</h2><p className="mt-4 text-lg leading-7 text-warm-muted">Você recebe as peças que normalmente teria que criar, traduzir e adaptar separadamente.</p></div>
-    <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">{deliverables.map(([Icon,t,d]:any)=><article key={t} className="group rounded-2xl border border-ink/10 bg-paper p-6 transition-transform hover:-translate-y-1"><span className="grid size-11 place-items-center rounded-xl bg-forest/10"><Icon className="size-5 text-forest"/></span><h3 className="mt-5 text-xl font-semibold">{t}</h3><p className="mt-2 text-sm leading-6 text-warm-muted">{d}</p></article>)}</div>
-   </section>
-
-   <section id="como" className="scroll-mt-24 border-y border-ink/10 bg-paper"><div className="mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24"><div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr]"><div><p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Como funciona</p><h2 className="mt-3 text-4xl font-semibold tracking-tight">Do zero ao material pronto em três etapas.</h2><p className="mt-4 text-warm-muted">Você informa os fatos. O JobPass organiza a candidatura ao redor do mercado que escolheu.</p></div><ol className="space-y-3">{steps.map(([n,t,d])=><li key={n} className="grid grid-cols-[52px_1fr] gap-4 rounded-2xl border border-ink/10 bg-ivory p-5"><span className="grid size-11 place-items-center rounded-full bg-forest text-sm font-semibold text-paper">{n}</span><div><h3 className="font-semibold">{t}</h3><p className="mt-1 text-sm leading-6 text-warm-muted">{d}</p></div></li>)}</ol></div></div></section>
-
-   <section className="mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24">
-    <div className="grid items-center gap-12 lg:grid-cols-2">
-     <div>
-      <img src="/jobpass-vacancy-adaptation.svg" alt="Exemplo visual do JobPass adaptando um currículo a uma vaga específica" className="w-full rounded-3xl shadow-[var(--shadow-paper)]" loading="lazy"/>
-     </div>
-     <div>
-      <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Aplicar para uma vaga</p>
-      <h2 className="mt-3 text-4xl font-semibold tracking-tight">Pare de mandar o mesmo CV para todo mundo.</h2>
-      <p className="mt-5 leading-7 text-warm-muted">Cole a descrição da vaga. O JobPass identifica o que pode ser destacado usando somente experiências e competências que você realmente informou.</p>
-      <div className="mt-7 grid grid-cols-2 gap-3">{["Resumo","Experiência","Carta","Mensagem"].map((x,i)=><div key={x} className="rounded-xl border border-ink/10 bg-paper p-4"><span className="text-xs text-clay">0{i+1}</span><p className="mt-1 font-semibold">{x}</p></div>)}</div>
-      <p className="mt-5 text-sm leading-6 text-warm-muted">A lógica é sempre a mesma: adaptar o foco sem criar empresas, resultados, qualificações ou habilidades que não existem no seu histórico.</p>
-     </div>
-    </div>
-   </section>
-
-   <section className="border-y border-ink/10 bg-paper">
-    <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-[.85fr_1.15fr]">
-     <div>
-      <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">O momento da compra</p>
-      <h2 className="mt-3 text-4xl font-semibold tracking-tight">Mostre o resultado antes de pedir o pagamento.</h2>
-      <p className="mt-5 leading-7 text-warm-muted">O usuário termina o onboarding, vê que o pacote já foi preparado e consegue enxergar exatamente o que será desbloqueado: currículo, carta, mensagens, entrevista e plano de busca.</p>
-      <ul className="mt-6 space-y-3 text-sm">{["Resultado concreto antes do checkout","Itens do pacote visíveis e parcialmente bloqueados","CTA direto para liberar o JobPass completo"].map(x=><li key={x} className="flex gap-3"><Check className="size-5 shrink-0 text-forest"/>{x}</li>)}</ul>
-     </div>
-     <img src="/jobpass-preview-locked.svg" alt="Preview do JobPass pronto com materiais bloqueados antes do pagamento" className="w-full rounded-3xl shadow-[var(--shadow-paper)]" loading="lazy"/>
-    </div>
-   </section>
-
-   <section id="prova-social" className="border-y border-ink/10 bg-[#f3eee4]">
-    <div className="mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24">
-     <div className="grid gap-10 lg:grid-cols-[.72fr_1.28fr] lg:items-start">
-      <div>
-       <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Experiência real com imigrantes</p>
-       <h2 className="mt-3 text-4xl font-semibold tracking-tight">Mais de 8 mil imigrantes já foram ajudados pelas nossas estratégias.</h2>
-       <p className="mt-5 leading-7 text-warm-muted">Nossa agência já ajudou mais de 8 mil imigrantes na preparação para buscar oportunidades profissionais. O JobPass nasce justamente da migração dessa experiência para um formato digital, mais rápido, acessível e escalável.</p>
-       <div className="mt-7 rounded-2xl border border-forest/15 bg-paper p-5">
-        <p className="text-xs font-semibold uppercase tracking-[.16em] text-forest">Histórico da agência</p>
-        <p className="mt-2 text-4xl font-semibold tracking-tight">+8.000 imigrantes</p>
-        <p className="mt-2 text-sm leading-6 text-warm-muted">Pessoas já ajudadas com estratégias de preparação e busca de emprego. Agora essa experiência está sendo transformada em produto digital através do JobPass.</p>
-       </div>
+function Brand({ subtitle }: { subtitle: string }) {
+  return (
+    <Link to="/" className="flex items-center gap-3">
+      <span className="grid size-10 place-items-center rounded-xl bg-[#2f5fd7] font-bold text-white">
+        J
+      </span>
+      <div className="leading-none">
+        <b className="text-lg tracking-tight">JobPass</b>
+        <p className="mt-1 text-[9px] font-semibold uppercase tracking-[.2em] text-warm-muted">
+          {subtitle}
+        </p>
       </div>
-      <div>
-       <div className="mb-4 flex items-end justify-between gap-4">
-        <div><p className="text-sm font-semibold">Histórias de quem já passou por esse processo</p><p className="mt-1 text-xs text-warm-muted">4 espaços prontos para depoimentos reais e autorizados de clientes da agência.</p></div>
-        <ShieldCheck className="size-5 text-forest"/>
-       </div>
-       <div className="grid gap-4 sm:grid-cols-2">
-        {[1,2,3,4].map((n)=><article key={n} className="rounded-2xl border border-ink/10 bg-paper p-6">
-         <div className="mb-5 flex items-center gap-1 text-clay" aria-label="Espaço reservado para avaliação verificada"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div>
-         <p className="text-sm leading-6 text-warm-muted">Espaço reservado para um relato real de cliente da agência sobre currículo, busca de vagas, entrevistas ou adaptação ao novo mercado.</p>
-         <div className="mt-5 border-t border-ink/10 pt-4"><p className="text-sm font-semibold">Depoimento real #{n}</p><p className="mt-1 text-xs text-warm-muted">Nome, destino e profissão</p></div>
-        </article>)}
-       </div>
-      </div>
-     </div>
+    </Link>
+  );
+}
+
+function ProductMockup() {
+  return (
+    <div className="relative mx-auto max-w-[590px]">
+      <div className="absolute -inset-8 rounded-[2.5rem] bg-white/10 blur-2xl" />
+      <img
+        src="/jobpass-dashboard.svg"
+        alt="JobPass dashboard"
+        className="relative w-full rounded-[2rem] shadow-2xl"
+        loading="eager"
+      />
     </div>
-   </section>
+  );
+}
 
-   <section id="preco" className="scroll-mt-24 border-y border-ink/10 bg-[#e8dfcf]"><div className="mx-auto max-w-[980px] px-5 py-20 text-center sm:px-8 sm:py-24"><p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Oferta de lançamento</p><h2 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Comece preparado, sem gastar uma fortuna.</h2><p className="mx-auto mt-4 max-w-2xl text-warm-muted">A estrutura de pagamento será conectada ao checkout escolhido. O preço abaixo é a proposta inicial para validação do produto.</p><div className="mx-auto mt-9 max-w-lg rounded-3xl border border-ink/10 bg-paper p-7 text-left shadow-[var(--shadow-paper)] sm:p-9"><p className="text-sm font-semibold text-forest">JobPass Essencial</p><div className="mt-3 flex items-end gap-2"><span className="text-5xl font-semibold tracking-tight">€12,90</span><span className="pb-1 text-sm text-warm-muted">pagamento único</span></div><ul className="mt-7 space-y-3 text-sm">{["Currículo adaptado + ATS","Versão no idioma local","Carta e mensagens de candidatura","Preparação para entrevista","Sites e termos de busca","Plano de candidatura de 7 dias"].map(x=><li key={x} className="flex gap-3"><Check className="size-5 shrink-0 text-forest"/>{x}</li>)}</ul><Button asChild size="lg" className="mt-8 h-13 w-full rounded-full"><Link to="/criar">Criar meu JobPass <ArrowRight/></Link></Button><p className="mt-3 text-center text-[11px] text-warm-muted">Checkout ainda não conectado nesta versão.</p></div></div></section>
+function LanguageSwitcher({
+  lang,
+  setLang,
+}: {
+  lang: Lang;
+  setLang: (lang: Lang) => void;
+}) {
+  return (
+    <label className="hidden items-center gap-1.5 text-xs text-warm-muted lg:flex">
+      <Globe2 className="size-3.5" />
+      <select
+        aria-label="Language"
+        value={lang}
+        onChange={(event) => setLang(event.target.value as Lang)}
+        className="bg-transparent font-medium outline-none"
+      >
+        <option value="pt">PT</option>
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+        <option value="de">DE</option>
+        <option value="it">IT</option>
+      </select>
+    </label>
+  );
+}
 
-   <section id="faq" className="scroll-mt-24 mx-auto max-w-[980px] px-5 py-20 sm:px-8 sm:py-24"><p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Antes de começar</p><h2 className="mt-3 text-4xl font-semibold tracking-tight">Perguntas frequentes</h2><div className="mt-8 divide-y divide-ink/10 border-y border-ink/10">{faq.map(([q,a])=><details key={q} className="group py-5"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-semibold">{q}<span className="text-xl text-clay group-open:rotate-45">+</span></summary><p className="mt-3 max-w-3xl text-sm leading-6 text-warm-muted">{a}</p></details>)}</div></section>
+function Index() {
+  const [lang, setLangState] = useState<Lang>("en");
 
-   <section className="bg-forest-deep text-paper"><div className="mx-auto max-w-[1280px] px-5 py-16 text-center sm:px-8"><Sparkles className="mx-auto size-6 text-sand"/><h2 className="mx-auto mt-4 max-w-2xl text-4xl font-semibold tracking-tight">Sua mudança já tem coisas demais para resolver. A candidatura não precisa começar do zero.</h2><Button asChild size="lg" className="mt-7 rounded-full bg-paper px-7 text-forest hover:bg-sand"><Link to="/criar">Montar meu JobPass <ArrowRight/></Link></Button></div></section>
-  </main>
+  useEffect(() => {
+    setLangState(detectLanguage());
+  }, []);
 
-  <footer className="border-t border-white/10 bg-[#0b211c] text-paper"><div className="mx-auto flex max-w-[1280px] flex-col gap-6 px-5 py-10 sm:px-8 md:flex-row md:items-center md:justify-between"><Brand/><div className="max-w-xl text-xs leading-5 text-paper/50"><div className="mb-2 flex items-center gap-2 text-paper/70"><ShieldCheck className="size-4"/> Informação responsável</div>JobPass é uma ferramenta de preparação profissional. Informações migratórias, legais e de direito ao trabalho devem ser confirmadas em fontes oficiais atualizadas.</div></div></footer>
- </div>
+  const setLang = (next: Lang) => {
+    setLangState(next);
+    window.localStorage.setItem("jobpass-language", next);
+    document.documentElement.lang = next;
+  };
+
+  const t = copy[lang];
+
+  return (
+    <div className="min-h-dvh bg-ivory text-ink">
+      <header className="sticky top-0 z-30 border-b border-ink/10 bg-ivory/95 backdrop-blur">
+        <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-5 py-4 sm:px-8">
+          <Brand subtitle={t.brand} />
+          <nav className="hidden items-center gap-7 text-sm text-warm-muted md:flex">
+            <a href="#recebe" className="hover:text-ink">
+              {t.nav[0]}
+            </a>
+            <a href="#como" className="hover:text-ink">
+              {t.nav[1]}
+            </a>
+            <a href="#faq" className="hover:text-ink">
+              {t.nav[2]}
+            </a>
+          </nav>
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher lang={lang} setLang={setLang} />
+            <Button asChild className="rounded-full bg-[#2f5fd7] px-5 hover:bg-[#244fc1]">
+              <Link to="/criar">{t.cta}</Link>
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section className="relative overflow-hidden bg-[linear-gradient(125deg,#102e28_0%,#1c5145_55%,#70483b_100%)] text-paper">
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(255,255,255,.11),transparent_25%),radial-gradient(circle_at_90%_80%,rgba(220,173,128,.2),transparent_28%)]"
+          />
+          <div className="relative mx-auto max-w-[1280px] px-5 pt-9 sm:px-8 sm:pt-12">
+            <div className="mx-auto flex max-w-4xl flex-col items-center rounded-2xl border border-white/15 bg-white/10 px-5 py-4 text-center shadow-lg backdrop-blur sm:px-8">
+              <div className="flex items-center gap-2 text-[#ffd58f]">
+                <span className="text-sm tracking-[.12em]">★★★★★</span>
+                <span className="text-[11px] font-semibold uppercase tracking-[.15em]">
+                  Social proof
+                </span>
+              </div>
+              <p className="mt-2 text-xl font-bold leading-tight sm:text-2xl">
+                {t.proof}
+              </p>
+              <p className="mt-1 text-xs text-paper/65">{t.proofSub}</p>
+            </div>
+          </div>
+
+          <div className="relative mx-auto grid max-w-[1280px] items-center gap-14 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[1.05fr_.95fr] lg:py-24">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs text-paper/80">
+                <Globe2 className="size-3.5" /> {t.eyebrow}
+              </div>
+              <h1 className="mt-6 max-w-[13ch] text-[2.8rem] font-semibold leading-[1.02] tracking-[-.05em] sm:text-6xl lg:text-[4.3rem]">
+                {t.hero}
+              </h1>
+              <p className="mt-6 max-w-[57ch] text-base leading-7 text-paper/75 sm:text-lg">
+                {t.heroSub}
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Button
+                  asChild
+                  size="lg"
+                  className="h-12 rounded-full bg-paper px-7 text-forest hover:bg-sand"
+                >
+                  <Link to="/criar">
+                    {t.heroCta} <ArrowRight />
+                  </Link>
+                </Button>
+                <span className="text-sm text-paper/60">{t.minutes}</span>
+              </div>
+              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-paper/65">
+                {t.trust.map((item) => (
+                  <span key={item}>✓ {item}</span>
+                ))}
+              </div>
+            </div>
+            <ProductMockup />
+          </div>
+        </section>
+
+        <section className="border-b border-ink/10 bg-paper">
+          <div className="mx-auto max-w-[1280px] px-5 py-7 sm:px-8">
+            <p className="mb-4 text-center text-[11px] font-semibold uppercase tracking-[.18em] text-warm-muted">
+              {t.reviewsTitle}
+            </p>
+            <div className="grid gap-2 md:grid-cols-4">
+              {testimonials.map(([name, quote]) => (
+                <article
+                  key={name}
+                  className="rounded-xl border border-ink/10 bg-ivory/70 px-4 py-3"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <b className="text-sm">{name}</b>
+                    <span
+                      className="shrink-0 text-[10px] tracking-[.06em] text-[#c98632]"
+                      aria-label="5 estrelas"
+                    >
+                      ★★★★★
+                    </span>
+                  </div>
+                  <p className="mt-2 text-[13px] leading-5 text-warm-muted">
+                    “{quote}”
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="recebe"
+          className="scroll-mt-24 mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24"
+        >
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">
+              {t.deliverEyebrow}
+            </p>
+            <h2 className="mt-3 text-4xl font-semibold tracking-[-.035em] sm:text-5xl">
+              {t.deliverTitle}
+            </h2>
+            <p className="mt-4 text-lg leading-7 text-warm-muted">
+              {t.deliverSub}
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {t.deliver.map(([title, description], index) => {
+              const Icon = featureIcons[index]!;
+              return (
+                <article
+                  key={title}
+                  className="group rounded-2xl border border-ink/10 bg-paper p-6 transition-transform hover:-translate-y-1"
+                >
+                  <span className="grid size-11 place-items-center rounded-xl bg-forest/10">
+                    <Icon className="size-5 text-forest" />
+                  </span>
+                  <h3 className="mt-5 text-xl font-semibold">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-warm-muted">
+                    {description}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        <section id="como" className="scroll-mt-24 border-y border-ink/10 bg-paper">
+          <div className="mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24">
+            <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">
+                  {t.howEyebrow}
+                </p>
+                <h2 className="mt-3 text-4xl font-semibold tracking-tight">
+                  {t.howTitle}
+                </h2>
+                <p className="mt-4 text-warm-muted">{t.howSub}</p>
+              </div>
+              <ol className="space-y-3">
+                {t.steps.map(([title, description], index) => (
+                  <li
+                    key={title}
+                    className="grid grid-cols-[52px_1fr] gap-4 rounded-2xl border border-ink/10 bg-ivory p-5"
+                  >
+                    <span className="grid size-11 place-items-center rounded-full bg-forest text-sm font-semibold text-paper">
+                      0{index + 1}
+                    </span>
+                    <div>
+                      <h3 className="font-semibold">{title}</h3>
+                      <p className="mt-1 text-sm leading-6 text-warm-muted">
+                        {description}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <img
+              src="/jobpass-vacancy-adaptation.svg"
+              alt="JobPass vacancy adaptation"
+              className="w-full rounded-3xl shadow-[var(--shadow-paper)]"
+              loading="lazy"
+            />
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">
+                {t.vacancyEyebrow}
+              </p>
+              <h2 className="mt-3 text-4xl font-semibold tracking-tight">
+                {t.vacancyTitle}
+              </h2>
+              <p className="mt-5 leading-7 text-warm-muted">{t.vacancySub}</p>
+              <div className="mt-7 grid grid-cols-2 gap-3">
+                {t.vacancyCards.map((item, index) => (
+                  <div
+                    key={item}
+                    className="rounded-xl border border-ink/10 bg-paper p-4"
+                  >
+                    <span className="text-xs text-clay">0{index + 1}</span>
+                    <p className="mt-1 font-semibold">{item}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 text-sm leading-6 text-warm-muted">
+                {t.integrity}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="faq"
+          className="scroll-mt-24 mx-auto max-w-[980px] px-5 py-20 sm:px-8 sm:py-24"
+        >
+          <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">
+            {t.faqEyebrow}
+          </p>
+          <h2 className="mt-3 text-4xl font-semibold tracking-tight">
+            {t.faqTitle}
+          </h2>
+          <div className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
+            {t.faq.map(([question, answer]) => (
+              <details key={question} className="group py-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-semibold">
+                  {question}
+                  <span className="text-xl text-clay group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 max-w-3xl text-sm leading-6 text-warm-muted">
+                  {answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-forest-deep text-paper">
+          <div className="mx-auto max-w-[1280px] px-5 py-16 text-center sm:px-8">
+            <Sparkles className="mx-auto size-6 text-sand" />
+            <h2 className="mx-auto mt-4 max-w-2xl text-4xl font-semibold tracking-tight">
+              {t.finalTitle}
+            </h2>
+            <Button
+              asChild
+              size="lg"
+              className="mt-7 rounded-full bg-paper px-7 text-forest hover:bg-sand"
+            >
+              <Link to="/criar">
+                {t.finalCta} <ArrowRight />
+              </Link>
+            </Button>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-white/10 bg-[#0b211c] text-paper">
+        <div className="mx-auto flex max-w-[1280px] flex-col gap-6 px-5 py-10 sm:px-8 md:flex-row md:items-center md:justify-between">
+          <Brand subtitle={t.brand} />
+          <div className="max-w-xl text-xs leading-5 text-paper/50">
+            <div className="mb-2 flex items-center gap-2 text-paper/70">
+              <ShieldCheck className="size-4" /> {t.responsible}
+            </div>
+            {t.footer}
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
 }
