@@ -546,11 +546,14 @@ function Index() {
                 </Button>
                 <span className="text-sm text-[#7b705f]">{t.minutes}</span>
               </div>
-              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium text-[#8a681f]">
+              <ul className="mt-8 grid max-w-md grid-cols-1 gap-x-6 gap-y-2.5 text-xs font-medium text-[#8a681f] min-[420px]:grid-cols-2 sm:max-w-none sm:grid-cols-3 lg:flex lg:flex-wrap">
                 {t.trust.map((item) => (
-                  <span key={item}>✓ {item}</span>
+                  <li key={item} className="flex min-w-0 items-start gap-1.5">
+                    <span aria-hidden="true" className="shrink-0 leading-4">✓</span>
+                    <span className="leading-4">{item}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
             <ProductMockup />
           </div>
