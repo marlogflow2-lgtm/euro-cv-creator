@@ -37,15 +37,14 @@ const faq = [
 function Brand(){return <Link to="/" className="flex items-center gap-3"><span className="grid size-10 place-items-center rounded-xl bg-forest font-bold text-paper">J</span><div className="leading-none"><b className="text-lg tracking-tight">JobPass</b><p className="mt-1 text-[9px] font-semibold uppercase tracking-[.2em] text-warm-muted">Emprego internacional</p></div></Link>}
 
 function ProductMockup(){
- return <div className="relative mx-auto max-w-[540px]">
-  <div className="absolute -inset-5 rounded-[2rem] bg-white/10 blur-xl"/>
-  <div className="relative overflow-hidden rounded-[1.6rem] border border-white/20 bg-[#f7f3e9] shadow-2xl">
-   <div className="flex items-center justify-between border-b border-ink/10 px-5 py-4 text-ink"><b>Seu JobPass</b><span className="rounded-full bg-forest/10 px-3 py-1 text-[11px] font-semibold text-forest">Espanha · Hotelaria</span></div>
-   <div className="grid gap-3 p-5 sm:grid-cols-2">
-    <div className="sm:col-span-2 rounded-xl bg-forest p-5 text-paper"><p className="text-xs text-paper/65">Perfil profissional</p><p className="mt-2 text-lg font-semibold">Currículo pronto para candidaturas</p><div className="mt-4 h-2 w-full rounded bg-white/20"/><div className="mt-2 h-2 w-4/5 rounded bg-white/15"/></div>
-    {["CV adaptado","Versão ATS","Mensagens","Entrevista"].map((x,i)=><div key={x} className="rounded-xl border border-ink/10 bg-white p-4 text-ink"><div className="mb-3 flex items-center justify-between"><span className="text-sm font-semibold">{x}</span><Check className="size-4 text-forest"/></div><div className="h-1.5 rounded bg-ink/10"/><div className={"mt-2 h-1.5 rounded bg-ink/10 "+(i%2?"w-2/3":"w-4/5")}/></div>)}
-   </div>
-  </div>
+ return <div className="relative mx-auto max-w-[590px]">
+  <div className="absolute -inset-8 rounded-[2.5rem] bg-white/10 blur-2xl"/>
+  <img
+   src="/jobpass-dashboard.svg"
+   alt="Painel do JobPass com currículo, mensagens, entrevista e acompanhamento de candidaturas"
+   className="relative w-full rounded-[2rem] shadow-2xl"
+   loading="eager"
+  />
  </div>
 }
 
@@ -83,7 +82,32 @@ function Index(){
 
    <section id="como" className="scroll-mt-24 border-y border-ink/10 bg-paper"><div className="mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24"><div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr]"><div><p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Como funciona</p><h2 className="mt-3 text-4xl font-semibold tracking-tight">Do zero ao material pronto em três etapas.</h2><p className="mt-4 text-warm-muted">Você informa os fatos. O JobPass organiza a candidatura ao redor do mercado que escolheu.</p></div><ol className="space-y-3">{steps.map(([n,t,d])=><li key={n} className="grid grid-cols-[52px_1fr] gap-4 rounded-2xl border border-ink/10 bg-ivory p-5"><span className="grid size-11 place-items-center rounded-full bg-forest text-sm font-semibold text-paper">{n}</span><div><h3 className="font-semibold">{t}</h3><p className="mt-1 text-sm leading-6 text-warm-muted">{d}</p></div></li>)}</ol></div></div></section>
 
-   <section className="mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24"><div className="grid items-center gap-12 lg:grid-cols-2"><div className="rounded-3xl bg-forest-deep p-7 text-paper sm:p-9"><p className="text-xs font-semibold uppercase tracking-[.18em] text-sand">Aplicar para uma vaga</p><h3 className="mt-3 text-3xl font-semibold">Pare de mandar o mesmo CV para todo mundo.</h3><p className="mt-4 leading-7 text-paper/70">Cole a descrição da vaga. O JobPass identifica o que pode ser destacado usando somente experiências e competências que você realmente informou.</p><div className="mt-7 rounded-2xl bg-white/10 p-5"><p className="text-xs text-paper/55">VAGA</p><p className="mt-2 text-sm">“Buscamos profissional para atendimento ao cliente, trabalho em equipe e disponibilidade…”</p><div className="my-4 h-px bg-white/10"/><p className="text-xs text-sand">ADAPTAÇÃO</p><p className="mt-2 text-sm text-paper/75">Priorizar atendimento e colaboração quando essas experiências existirem no seu histórico.</p></div></div><div><p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Feito para imigrantes</p><h2 className="mt-3 text-4xl font-semibold tracking-tight">O mercado muda. Seu material também precisa mudar.</h2><p className="mt-5 leading-7 text-warm-muted">Cargo, idioma, formato de currículo, canais de contato e termos usados na busca variam de um mercado para outro. Por isso a estrutura do JobPass parte de quatro informações:</p><div className="mt-6 grid grid-cols-2 gap-3">{["Origem","Destino","Profissão","Idioma"].map((x,i)=><div key={x} className="rounded-xl border border-ink/10 bg-paper p-4"><span className="text-xs text-clay">0{i+1}</span><p className="mt-1 font-semibold">{x}</p></div>)}</div></div></div></section>
+   <section className="mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24">
+    <div className="grid items-center gap-12 lg:grid-cols-2">
+     <div>
+      <img src="/jobpass-vacancy-adaptation.svg" alt="Exemplo visual do JobPass adaptando um currículo a uma vaga específica" className="w-full rounded-3xl shadow-[var(--shadow-paper)]" loading="lazy"/>
+     </div>
+     <div>
+      <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Aplicar para uma vaga</p>
+      <h2 className="mt-3 text-4xl font-semibold tracking-tight">Pare de mandar o mesmo CV para todo mundo.</h2>
+      <p className="mt-5 leading-7 text-warm-muted">Cole a descrição da vaga. O JobPass identifica o que pode ser destacado usando somente experiências e competências que você realmente informou.</p>
+      <div className="mt-7 grid grid-cols-2 gap-3">{["Resumo","Experiência","Carta","Mensagem"].map((x,i)=><div key={x} className="rounded-xl border border-ink/10 bg-paper p-4"><span className="text-xs text-clay">0{i+1}</span><p className="mt-1 font-semibold">{x}</p></div>)}</div>
+      <p className="mt-5 text-sm leading-6 text-warm-muted">A lógica é sempre a mesma: adaptar o foco sem criar empresas, resultados, qualificações ou habilidades que não existem no seu histórico.</p>
+     </div>
+    </div>
+   </section>
+
+   <section className="border-y border-ink/10 bg-paper">
+    <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-[.85fr_1.15fr]">
+     <div>
+      <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">O momento da compra</p>
+      <h2 className="mt-3 text-4xl font-semibold tracking-tight">Mostre o resultado antes de pedir o pagamento.</h2>
+      <p className="mt-5 leading-7 text-warm-muted">O usuário termina o onboarding, vê que o pacote já foi preparado e consegue enxergar exatamente o que será desbloqueado: currículo, carta, mensagens, entrevista e plano de busca.</p>
+      <ul className="mt-6 space-y-3 text-sm">{["Resultado concreto antes do checkout","Itens do pacote visíveis e parcialmente bloqueados","CTA direto para liberar o JobPass completo"].map(x=><li key={x} className="flex gap-3"><Check className="size-5 shrink-0 text-forest"/>{x}</li>)}</ul>
+     </div>
+     <img src="/jobpass-preview-locked.svg" alt="Preview do JobPass pronto com materiais bloqueados antes do pagamento" className="w-full rounded-3xl shadow-[var(--shadow-paper)]" loading="lazy"/>
+    </div>
+   </section>
 
    <section id="preco" className="scroll-mt-24 border-y border-ink/10 bg-[#e8dfcf]"><div className="mx-auto max-w-[980px] px-5 py-20 text-center sm:px-8 sm:py-24"><p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Oferta de lançamento</p><h2 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Comece preparado, sem gastar uma fortuna.</h2><p className="mx-auto mt-4 max-w-2xl text-warm-muted">A estrutura de pagamento será conectada ao checkout escolhido. O preço abaixo é a proposta inicial para validação do produto.</p><div className="mx-auto mt-9 max-w-lg rounded-3xl border border-ink/10 bg-paper p-7 text-left shadow-[var(--shadow-paper)] sm:p-9"><p className="text-sm font-semibold text-forest">JobPass Essencial</p><div className="mt-3 flex items-end gap-2"><span className="text-5xl font-semibold tracking-tight">€12,90</span><span className="pb-1 text-sm text-warm-muted">pagamento único</span></div><ul className="mt-7 space-y-3 text-sm">{["Currículo adaptado + ATS","Versão no idioma local","Carta e mensagens de candidatura","Preparação para entrevista","Sites e termos de busca","Plano de candidatura de 7 dias"].map(x=><li key={x} className="flex gap-3"><Check className="size-5 shrink-0 text-forest"/>{x}</li>)}</ul><Button asChild size="lg" className="mt-8 h-13 w-full rounded-full"><Link to="/criar">Criar meu JobPass <ArrowRight/></Link></Button><p className="mt-3 text-center text-[11px] text-warm-muted">Checkout ainda não conectado nesta versão.</p></div></div></section>
 
