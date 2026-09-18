@@ -397,7 +397,7 @@ function detectLanguage(): Lang {
   if (typeof navigator === "undefined") return "en";
   const saved = window.localStorage.getItem("jobpass-language") as Lang | null;
   if (saved && saved in copy) return saved;
-  const code = navigator.language.toLowerCase().split("-")[0];
+  const code = navigator.language.toLowerCase().split("-")[0] ?? "en";
   return (["pt", "es", "en", "fr", "de", "it"].includes(code) ? code : "en") as Lang;
 }
 
