@@ -398,7 +398,8 @@ function detectLanguage(): Lang {
   const saved = window.localStorage.getItem("jobpass-language") as Lang | null;
   if (saved && saved in copy) return saved;
   const code = navigator.language.toLowerCase().split("-")[0];
-  return (["pt", "es", "en", "fr", "de", "it"] as string[]).includes(code) ? (code as Lang) : "en";
+  const supported = ["pt", "es", "en", "fr", "de", "it"] as const;
+  return supported.includes(code as (typeof supported)[number]) ? (code as Lang) : "en";
 }
 
 function Brand({ subtitle }: { subtitle: string }) {
