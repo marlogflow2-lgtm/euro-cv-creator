@@ -419,12 +419,12 @@ function Brand({ subtitle }: { subtitle: string }) {
 
 function ProductMockup() {
   return (
-    <div className="relative mx-auto w-full max-w-[720px] lg:max-w-[760px]">
-      <div className="absolute -inset-10 rounded-[2.8rem] bg-[#d4af37]/12 blur-3xl" />
+    <div className="relative mx-auto w-full max-w-[920px] lg:scale-[1.08] xl:scale-[1.12]">
+      <div className="absolute -inset-12 rounded-[3rem] bg-[#d4af37]/14 blur-3xl" />
       <img
         src="/jobpass-dashboard.svg"
         alt="JobPass dashboard"
-        className="relative w-full rounded-[2rem] border border-[#d4af37]/20 shadow-[0_30px_80px_rgba(122,91,29,.16)]"
+        className="relative ml-auto w-full rounded-[2rem] border border-[#d4af37]/25 shadow-[0_34px_90px_rgba(122,91,29,.18)]"
         loading="eager"
       />
     </div>
@@ -515,13 +515,21 @@ function Index() {
             </div>
           </div>
 
-          <div className="relative mx-auto grid max-w-[1380px] items-center gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[.88fr_1.12fr] lg:py-24">
-            <div>
+          <div className="relative mx-auto grid max-w-[1480px] items-center gap-8 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[.82fr_1.18fr] lg:py-24 xl:gap-6">
+            <div className="max-w-[650px]">
               <div className="inline-flex items-center gap-2 rounded-full border border-[#d4af37]/35 bg-[#fffaf0] px-3 py-1.5 text-xs font-medium text-[#8a681f]">
                 <Globe2 className="size-3.5" /> {t.eyebrow}
               </div>
-              <h1 className="mt-6 max-w-[13ch] text-[2.8rem] font-semibold leading-[1.02] tracking-[-.05em] sm:text-6xl lg:text-[4.3rem]">
-                {t.hero}
+              <h1 className="mt-6 text-[2.8rem] font-semibold leading-[.98] tracking-[-.055em] sm:text-6xl lg:text-[4.2rem] xl:text-[4.65rem]">
+                {lang === "pt" ? (
+                  <>
+                    <span className="lg:whitespace-nowrap">Consiga sua vaga em qualquer país</span>
+                    <br />
+                    <span className="lg:whitespace-nowrap">antes mesmo de viajar.</span>
+                  </>
+                ) : (
+                  t.hero
+                )}
               </h1>
               <p className="mt-6 max-w-[57ch] text-base leading-7 text-[#6b604e] sm:text-lg">
                 {t.heroSub}
