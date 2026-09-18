@@ -470,7 +470,9 @@ function Index() {
   const [lang, setLangState] = useState<Lang>("en");
 
   useEffect(() => {
-    setLangState(detectLanguage());
+    const detected = detectLanguage();
+    setLangState(detected);
+    document.documentElement.lang = detected;
   }, []);
 
   const setLang = (next: Lang) => {
@@ -516,10 +518,7 @@ function Index() {
             <div className="mx-auto flex max-w-4xl flex-col items-center rounded-2xl border border-white/15 bg-white/10 px-5 py-4 text-center shadow-lg backdrop-blur sm:px-8">
               <div className="flex items-center gap-2 text-[#ffd58f]">
                 <span className="text-sm tracking-[.12em]">★★★★★</span>
-                <span className="text-[11px] font-semibold uppercase tracking-[.15em]">
-                  Social proof
-                </span>
-              </div>
+                              </div>
               <p className="mt-2 text-xl font-bold leading-tight sm:text-2xl">
                 {t.proof}
               </p>
