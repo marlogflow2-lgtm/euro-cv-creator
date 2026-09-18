@@ -160,7 +160,7 @@ const copy = {
     eyebrow: "For people who want to work in another country",
     hero: "Land your job in any country before you even travel.",
     heroSub:
-      "Start on the right path to apply for the roles you want. JobPass gives you the right kit, using strategies followed by immigrants around the world, to find the right opportunities and move closer to your goal of living abroad.",
+      "O caminho certo para se candidatar às vagas do seu interesse fora do seu país. Estratégias usadas por imigrantes de todo o mundo, para encontrar as oportunidades certas, se conectar com empresas do mundo todo e se aproximar do seu sonho de viver fora do país.",
     heroCta: "Build my JobPass",
     minutes: "It only takes a few minutes to start",
     trust: ["No made-up experience", "Adapted to your destination", "Ready to use"],
