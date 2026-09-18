@@ -113,25 +113,25 @@ function Index(){
     <div className="mx-auto max-w-[1280px] px-5 py-20 sm:px-8 sm:py-24">
      <div className="grid gap-10 lg:grid-cols-[.72fr_1.28fr] lg:items-start">
       <div>
-       <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Confiança que se constrói com resultado real</p>
-       <h2 className="mt-3 text-4xl font-semibold tracking-tight">Prova social sem exagero e sem promessa vazia.</h2>
-       <p className="mt-5 leading-7 text-warm-muted">Esta área está preparada para exibir uma métrica auditável de usuários atendidos e avaliações autorizadas. O JobPass não publica números ou depoimentos como reais sem comprovação.</p>
+       <p className="text-xs font-semibold uppercase tracking-[.2em] text-clay">Experiência real com imigrantes</p>
+       <h2 className="mt-3 text-4xl font-semibold tracking-tight">Mais de 8 mil imigrantes já foram ajudados pelas nossas estratégias.</h2>
+       <p className="mt-5 leading-7 text-warm-muted">Nossa agência já ajudou mais de 8 mil imigrantes na preparação para buscar oportunidades profissionais. O JobPass nasce justamente da migração dessa experiência para um formato digital, mais rápido, acessível e escalável.</p>
        <div className="mt-7 rounded-2xl border border-forest/15 bg-paper p-5">
-        <p className="text-xs font-semibold uppercase tracking-[.16em] text-forest">Métrica verificada</p>
-        <p className="mt-2 text-3xl font-semibold tracking-tight">Insira aqui seu número comprovado</p>
-        <p className="mt-2 text-sm leading-6 text-warm-muted">Ex.: “+8 mil imigrantes atendidos” somente quando você tiver uma base, relatório, CRM, checkout ou outra evidência que sustente essa afirmação.</p>
+        <p className="text-xs font-semibold uppercase tracking-[.16em] text-forest">Histórico da agência</p>
+        <p className="mt-2 text-4xl font-semibold tracking-tight">+8.000 imigrantes</p>
+        <p className="mt-2 text-sm leading-6 text-warm-muted">Pessoas já ajudadas com estratégias de preparação e busca de emprego. Agora essa experiência está sendo transformada em produto digital através do JobPass.</p>
        </div>
       </div>
       <div>
        <div className="mb-4 flex items-end justify-between gap-4">
-        <div><p className="text-sm font-semibold">Avaliações verificadas</p><p className="mt-1 text-xs text-warm-muted">4 espaços prontos para feedbacks reais de clientes.</p></div>
+        <div><p className="text-sm font-semibold">Histórias de quem já passou por esse processo</p><p className="mt-1 text-xs text-warm-muted">4 espaços prontos para depoimentos reais e autorizados de clientes da agência.</p></div>
         <ShieldCheck className="size-5 text-forest"/>
        </div>
        <div className="grid gap-4 sm:grid-cols-2">
         {[1,2,3,4].map((n)=><article key={n} className="rounded-2xl border border-ink/10 bg-paper p-6">
          <div className="mb-5 flex items-center gap-1 text-clay" aria-label="Espaço reservado para avaliação verificada"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div>
-         <p className="text-sm leading-6 text-warm-muted">Depoimento real do cliente entra aqui depois de autorizado. Evite textos genéricos: quanto mais específico sobre o problema e o resultado, mais confiança ele gera.</p>
-         <div className="mt-5 border-t border-ink/10 pt-4"><p className="text-sm font-semibold">Cliente verificado #{n}</p><p className="mt-1 text-xs text-warm-muted">Nome, destino e profissão</p></div>
+         <p className="text-sm leading-6 text-warm-muted">Espaço reservado para um relato real de cliente da agência sobre currículo, busca de vagas, entrevistas ou adaptação ao novo mercado.</p>
+         <div className="mt-5 border-t border-ink/10 pt-4"><p className="text-sm font-semibold">Depoimento real #{n}</p><p className="mt-1 text-xs text-warm-muted">Nome, destino e profissão</p></div>
         </article>)}
        </div>
       </div>
