@@ -48,7 +48,7 @@ const copy = {
     eyebrow: "Para quem quer trabalhar em outro país",
     hero: "Consiga sua vaga em qualquer país antes mesmo de viajar.",
     heroSub:
-      "O caminho certo para se candidatar às vagas do seu interesse fora do seu país. Estratégias usadas por imigrantes de todo o mundo, para encontrar as oportunidades certas, se conectar com empresas do mundo todo e se aproximar do seu sonho de viver fora do país. \n✓ Sem inventar experiência \n✓ Adaptado ao destino \n✓ Pronto para usar \n✓ Oportunidades Reais \n✓ Empresas no mundo todo",
+      "O caminho certo para se candidatar às vagas do seu interesse fora do seu país. Estratégias usadas por imigrantes de todo o mundo, para encontrar as oportunidades certas, se conectar com empresas do mundo todo e se aproximar do seu sonho de viver fora do país.\n\n✓ Sem inventar experiência\n✓ Adaptado ao destino\n✓ Pronto para usar\n✓ Oportunidades Reais\n✓ Empresas no mundo todo",
     heroCta: "Montar meu JobPass",
     minutes: "Leva poucos minutos para começar",
     trust: ["Sem inventar experiência", "Adaptado ao destino", "Pronto para usar"],
