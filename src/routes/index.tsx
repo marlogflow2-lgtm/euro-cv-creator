@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { sampleCV } from "../lib/cv";
 
@@ -109,6 +109,9 @@ const steps = [
 
 const focusStyles = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-ivory";
 
+const contactEmail = "passaport@gmail.com";
+const contactHref = `mailto:${contactEmail}`;
+
 function Index() {
   return (
     <div className="min-h-dvh bg-ivory font-sans text-ink antialiased selection:bg-sand">
@@ -126,7 +129,7 @@ function Index() {
           <nav aria-label="Navegação principal" className="hidden items-center gap-10 text-sm font-medium lg:flex">
             <a href="#como" className={`rounded-sm text-warm-muted transition-colors hover:text-ink ${focusStyles}`}>Como funciona</a>
             <a href="#europass" className={`rounded-sm text-warm-muted transition-colors hover:text-ink ${focusStyles}`}>Formato Europass</a>
-            <a href="mailto:curriculumvitae@gmail.com" className={`rounded-sm text-warm-muted transition-colors hover:text-ink ${focusStyles}`}>Fale Conosco</a>
+            <a href="#contato" className={`rounded-sm text-warm-muted transition-colors hover:text-ink ${focusStyles}`}>Fale conosco</a>
           </nav>
           <Button asChild className="h-11 rounded-sm px-4 shadow-none sm:px-5">
             <Link to="/criar">Criar o meu CV</Link>
@@ -207,6 +210,25 @@ function Index() {
             </ol>
           </div>
         </section>
+
+        <section id="contato" aria-labelledby="contato-titulo" className="scroll-mt-6 border-b border-ink/10 bg-paper">
+          <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-16 sm:px-8 sm:py-20 md:grid-cols-2 md:items-center lg:gap-20 lg:px-12">
+            <div>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-clay">Estamos por aqui</p>
+              <h2 id="contato-titulo" className="font-sans text-3xl font-semibold tracking-tight sm:text-4xl">Fale conosco</h2>
+              <p className="mt-5 max-w-[48ch] text-base leading-7 text-warm-muted">Tem uma dúvida sobre o seu currículo, uma sugestão ou precisa de ajuda? Envie-nos um e-mail e conte como podemos ajudar.</p>
+            </div>
+            <div className="min-w-0 rounded-xl border border-ink/10 bg-ivory p-6 sm:p-8">
+              <div className="mb-5 flex size-12 items-center justify-center rounded-full bg-forest/10 text-forest"><Mail aria-hidden="true" className="size-6" /></div>
+              <h3 className="text-lg font-semibold tracking-tight">Vamos conversar por e-mail</h3>
+              <a href={contactHref} className={`break-words mt-3 inline-block text-base font-medium text-forest underline decoration-forest/30 underline-offset-4 hover:decoration-forest ${focusStyles}`}>{contactEmail}</a>
+              <div className="mt-6">
+                <Button asChild className="h-12 w-full rounded-sm px-6 shadow-none sm:w-auto"><a href={contactHref}>Escrever um e-mail<ArrowRight aria-hidden="true" /></a></Button>
+              </div>
+              <p className="mt-4 text-sm leading-6 text-warm-muted">O botão abre o seu aplicativo de e-mail com o nosso endereço preenchido.</p>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="bg-forest-deep text-sand">
@@ -214,6 +236,7 @@ function Index() {
           <div className="max-w-[38ch]">
             <div className="font-sans font-semibold tracking-tight text-2xl text-paper">Passepartout</div>
             <p className="mt-2 text-sm leading-relaxed text-sand/80">O curriculum vitae, formatado para a forma como a Europa realmente contrata.</p>
+            <a href="#contato" className="mt-4 inline-block rounded-sm text-sm font-medium text-paper underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-paper focus-visible:ring-offset-4 focus-visible:ring-offset-forest-deep">Fale conosco</a>
           </div>
           <Button asChild variant="secondary" className="h-11 rounded-sm px-5 shadow-none">
             <Link to="/criar">Começar agora</Link>
